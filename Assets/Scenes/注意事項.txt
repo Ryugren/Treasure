@@ -1,5 +1,5 @@
-‚±‚±‚ÍƒV[ƒ“ƒf[ƒ^‚Å‚·B
-GameScenes‚Í‹–‰Â‚Ì–³‚¢l‚Í˜M‚ç‚È‚¢‚Å‚­‚¾‚³‚¢B
-V‚½‚ÉScene‚ð’Ç‰Á‚·‚éÛ‚ÍTestScenes‚É“ü‚ê‚é‚©A
-VR‚ÉÚ‚µ‚¢‚©‚à‚µ‚ê‚È‚¢
-‡‰®—C—ºiƒvƒƒOƒ‰ƒ€ƒŠ[ƒ_[j‚É•·‚¢‚Ä‚­‚¾‚³‚¢
+ã“ã“ã¯ã‚·ãƒ¼ãƒ³ãƒ‡ãƒ¼ã‚¿ã§ã™ã€‚
+GameScenesã¯è¨±å¯ã®ç„¡ã„äººã¯å¼„ã‚‰ãªã„ã§ãã ã•ã„ã€‚
+æ–°ãŸã«Sceneã‚’è¿½åŠ ã™ã‚‹éš›ã¯TestScenesã«å…¥ã‚Œã‚‹ã‹ã€
+VRã«è©³ã—ã„ã‹ã‚‚ã—ã‚Œãªã„
+åˆå±‹ä½‘äº®ï¼ˆãƒ—ãƒ­ã‚°ãƒ©ãƒ ãƒªãƒ¼ãƒ€ãƒ¼ï¼‰ã«èžã„ã¦ãã ã•ã„
