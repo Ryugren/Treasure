@@ -163,6 +163,9 @@ public class ONSPAudioSource : MonoBehaviour
 		}
 	}
 
+    [SerializeField]
+    private Camera mainCamera = null;
+
 	/// <summary>
 	/// Awake this instance.
 	/// </summary>
@@ -327,7 +330,7 @@ public class ONSPAudioSource : MonoBehaviour
 
             // TO DO: Get the room reflection values and render those out as well (like we do in the VST)
 
-            if((Camera.main != null) && (reflOn == true))
+            if((mainCamera != null) && (reflOn == true))
             {
                 // Set color of cube (cyan is early reflections only, white is with reverb on)
                 if(reverbOn == true)
@@ -336,10 +339,10 @@ public class ONSPAudioSource : MonoBehaviour
                     c = Color.cyan;
 
                 Gizmos.color = c;
-                Gizmos.DrawWireCube(Camera.main.transform.position, new Vector3(width, height, length));
+                Gizmos.DrawWireCube(mainCamera.transform.position, new Vector3(width, height, length));
                 c.a = colorSolidAlpha;
                 Gizmos.color = c;
-                Gizmos.DrawCube(Camera.main.transform.position, new Vector3(width, height, length));
+                Gizmos.DrawCube(mainCamera.transform.position, new Vector3(width, height, length));
             }
         }
     }
