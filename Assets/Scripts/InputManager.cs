@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private bool testControl = false;
+
+    [SerializeField]
+    Camera mainCamera = null;
     void Start()
     {
     }
@@ -63,6 +66,10 @@ public class InputManager : MonoBehaviour
         RC.Button2.GetDown = Input.GetKeyDown(KeyCode.V);
         RC.Button2.GetUp = Input.GetKeyUp(KeyCode.V);
 
+        //マウス位置
+        Vector3 cpos = Input.mousePosition;
+        cpos.z = 10f;
+        Vector3 screenToWorldPointPosition = mainCamera.ScreenToWorldPoint(cpos);
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             //左ハンドトリガー ： 右クリック
@@ -75,8 +82,8 @@ public class InputManager : MonoBehaviour
             LC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
             LC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0);
 
-            //マウス位置
-            LC.Position = Input.mousePosition;
+            //コントローラー位置：マウス位置
+            LC.Position = screenToWorldPointPosition;
         }
         else
         {
@@ -89,9 +96,9 @@ public class InputManager : MonoBehaviour
             RC.IndexTrigger.Get = Input.GetMouseButton(0);
             RC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
             RC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0);
-            
-            //マウス位置
-            RC.Position = Input.mousePosition;
+
+            //コントローラー位置：マウス位置
+            RC.Position = screenToWorldPointPosition;
         }
 
         float axisX = Input.GetAxis("Horizontal");
