@@ -16,11 +16,11 @@ public class InputManager : MonoBehaviour
     /// <summary>
     /// 左コントローラー（プライマリトリガー）
     /// </summary>
-    public ControllerInput LC { get; private set; }
+    public ControllerInput LC { get; private set; } = new ControllerInput();
     /// <summary>
     /// 右コントローラー（セカンドトリガー）
     /// </summary>
-    public ControllerInput RC { get; private set; }
+    public ControllerInput RC { get; private set; } = new ControllerInput();
     // Start is called before the first frame update
     [SerializeField]
     private bool testControl = false;
@@ -195,13 +195,13 @@ public class InputManager : MonoBehaviour
             public float Axis { get; set; }
         }
         /// <summary>ハンドトリガー</summary>
-        public GetTrigger HandTrigger { get; set; }
+        public GetTrigger HandTrigger { get; set; } = new GetTrigger();
         /// <summary>インデックストリガー</summary>
-        public GetTrigger IndexTrigger { get; set; }
+        public GetTrigger IndexTrigger { get; set; } = new GetTrigger();
         /// <summary>A or Xボタン</summary>
-        public GetButton Button1 { get; set; }
+        public GetButton Button1 { get; set; } = new GetButton();
         /// <summary>B or Yボタン</summary>
-        public GetButton Button2 { get; set; }
+        public GetButton Button2 { get; set; } = new GetButton();
         /// <summary>スティックの入力</summary>
         public Vector2 AxisStick { get; set; }
         /// <summary>コントローラの位置</summary>
