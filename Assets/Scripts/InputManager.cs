@@ -70,6 +70,8 @@ public class InputManager : MonoBehaviour
         Vector3 cpos = Input.mousePosition;
         cpos.z = 10f;
         Vector3 screenToWorldPointPosition = mainCamera.ScreenToWorldPoint(cpos);
+        //回転量
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             //左ハンドトリガー ： 右クリック
@@ -84,6 +86,8 @@ public class InputManager : MonoBehaviour
 
             //コントローラー位置：マウス位置
             LC.Position = screenToWorldPointPosition;
+            //コントローラー角度：ホイール
+            LC.Rotation = LC.Rotation * Quaternion.AngleAxis(scrollWheel, Vector3.up);
         }
         else
         {
@@ -99,6 +103,8 @@ public class InputManager : MonoBehaviour
 
             //コントローラー位置：マウス位置
             RC.Position = screenToWorldPointPosition;
+            //コントローラー角度：ホイール
+            RC.Rotation = RC.Rotation * Quaternion.AngleAxis(scrollWheel, Vector3.up);
         }
 
         float axisX = Input.GetAxis("Horizontal");
@@ -168,6 +174,7 @@ public class InputManager : MonoBehaviour
         input.AxisStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, controller);
 
         input.Position = OVRInput.GetLocalControllerPosition(controller);
+        input.Rotation = OVRInput.GetLocalControllerRotation(controller);
     }
     
     /// <summary>
@@ -213,5 +220,7 @@ public class InputManager : MonoBehaviour
         public Vector2 AxisStick { get; set; }
         /// <summary>コントローラの位置</summary>
         public Vector3 Position { get; set; }
+        /// <summary>コントローラの角度</summary>
+        public Quaternion Rotation { get; set; }
     }
 }
