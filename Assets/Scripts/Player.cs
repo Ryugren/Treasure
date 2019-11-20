@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     {
         //コントローラ（腕）の位置
         beamArm.transform.position = inputManager.RC.Position;
+        beamArm.transform.rotation = inputManager.RC.Rotation;
         lightArm.transform.position = inputManager.LC.Position;
+        lightArm.transform.rotation = inputManager.LC.Rotation;
     }
 }
