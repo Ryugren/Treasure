@@ -44,6 +44,7 @@ public class InputManager : MonoBehaviour
             TestControl(LC, RC);
         }
     }
+
     private void TestControl(ControllerInput LC, ControllerInput RC)
     {
         //左ボタン1 : Z-Key
@@ -71,7 +72,7 @@ public class InputManager : MonoBehaviour
         cpos.z = 10f;
         Vector3 screenToWorldPointPosition = mainCamera.ScreenToWorldPoint(cpos);
         //回転量
-        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel") * 100;
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             //左ハンドトリガー ： 右クリック
@@ -87,7 +88,8 @@ public class InputManager : MonoBehaviour
             //コントローラー位置：マウス位置
             LC.Position = screenToWorldPointPosition;
             //コントローラー角度：ホイール
-            LC.Rotation = LC.Rotation * Quaternion.AngleAxis(scrollWheel, Vector3.up);
+            LC.Angle += scrollWheel;
+            LC.Rotation = Quaternion.AngleAxis(LC.Angle, Vector3.up);
         }
         else
         {
@@ -104,7 +106,8 @@ public class InputManager : MonoBehaviour
             //コントローラー位置：マウス位置
             RC.Position = screenToWorldPointPosition;
             //コントローラー角度：ホイール
-            RC.Rotation = RC.Rotation * Quaternion.AngleAxis(scrollWheel, Vector3.up);
+            RC.Angle += scrollWheel;
+            RC.Rotation = Quaternion.AngleAxis(RC.Angle, Vector3.up);
         }
 
         float axisX = Input.GetAxis("Horizontal");
@@ -222,5 +225,6 @@ public class InputManager : MonoBehaviour
         public Vector3 Position { get; set; }
         /// <summary>コントローラの角度</summary>
         public Quaternion Rotation { get; set; }
+        public float Angle { get; set; }
     }
 }
