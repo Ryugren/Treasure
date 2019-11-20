@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052752681}
   - component: {fileID: 1052752680}
+  - component: {fileID: 1052752682}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -255,6 +256,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052752682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052752679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666f9f85655e9b54da1a57c43a1d13a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameter:
+    moveSpeed: 5
+    turnSpeed: 2
+    maxPlayTime: 180
+    maxLife: 100
+    luxVolume: 1
+    maxBeamLimitTime: 3
+    maxBeamEnergyRechargeTime: 5
+    maxSlowTime: 5
+    slowMagnification: 0.75
+    maxObstructViewTime: 5
+    extentObstructView: 0.6
+    alphaObstructView: 0.5
+    player: {fileID: 8739201130737212636}
 --- !u!1 &1079958123
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,3 +652,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+--- !u!1 &8739201130737212635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6178348124368156583, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+    type: 3}
+  m_PrefabInstance: {fileID: 8739201130737212634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8739201130737212636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739201130737212635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fcfdae7bddc8f4458a90352176884b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
