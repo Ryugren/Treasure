@@ -115,11 +115,15 @@ public class InputManager : MonoBehaviour
         LC.AxisStick = new Vector2(axisX, axisY);
         if (Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E))
         {
-            RC.AxisStick = new Vector2(-1, 0);
+            RC.AxisStick = Vector2.left;
         }
         else if(Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q))
         {
-            RC.AxisStick = new Vector2(1, 0);
+            RC.AxisStick = Vector2.right;
+        }
+        else
+        {
+            RC.AxisStick = Vector2.zero;
         }
     }
     private void VRControl()
