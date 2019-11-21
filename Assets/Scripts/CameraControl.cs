@@ -17,6 +17,6 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mainCamera.transform.rotation = inputManager.Rotation;
+        //mainCamera.transform.rotation = inputManager.Rotation;
     }
 }
