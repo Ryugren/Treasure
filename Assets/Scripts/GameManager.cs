@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     {
         parameter.StartGameFlag = true;
     }
+    public void Damage(float amount)
+    {
+        parameter.Life -= amount;
+    }
     private void GameOver()
     {
         if(parameter.Life <= 0)
