@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private ParameterBase parameter = null;
+    /// <summary>
+    /// ゲームのパラメーター
+    /// </summary>
     public ParameterBase Parameter { get { return parameter; } }
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,9 @@ public class GameManager : MonoBehaviour
         CountTimer();
         BeamEnergyRecharge();
     }
+    /// <summary>
+    /// ゲームスタート
+    /// </summary>
     public void GameStart()
     {
         parameter.StartGameFlag = true;
@@ -87,39 +93,75 @@ public class GameManager : MonoBehaviour
     {
         [SerializeField, Tooltip("移動速度")]
         private float moveSpeed = 5;
+        /// <summary>
+        /// 移動速度
+        /// </summary>
         public float MoveSpeed { get { return moveSpeed; } }
         [SerializeField, Tooltip("旋回速度")]
         private float turnSpeed = 5;
+        /// <summary>
+        /// 旋回速度
+        /// </summary>
         public float TrunSpeed { get { return turnSpeed; } }
         [SerializeField, Tooltip("プレイ時間")]
         private float maxPlayTime = 180f;
+        /// <summary>
+        /// プレイ時間
+        /// </summary>
         public float MaxPlayTime { get { return maxPlayTime; } }
         [SerializeField, Tooltip("最大体力")]
         private float maxLife = 100;
+        /// <summary>
+        /// 最大体力
+        /// </summary>
         public float MaxLife { get { return maxLife; } }
-        [SerializeField, Tooltip("明るさ")]
+        [SerializeField, Tooltip("ライトの明るさ")]
         private float luxVolume = 1;
+        /// <summary>
+        /// ライトの明るさ
+        /// </summary>
         public float LuxVolume { get { return luxVolume; } }
         [SerializeField, Tooltip("ビーム継続時間")]
         private float maxBeamLimitTime = 3f;
+        /// <summary>
+        /// ビーム継続時間
+        /// </summary>
         public float MaxBeamLimitTime { get { return maxBeamLimitTime; } }
         [SerializeField, Tooltip("ビーム再装填時間")]
         private float maxBeamEnergyRechargeTime = 5f;
+        /// <summary>
+        /// ビーム再装填時間
+        /// </summary>
         public float MaxBeamEnergyRechargeTime { get { return maxBeamEnergyRechargeTime; } }
         [SerializeField, Tooltip("鈍足継続時間")]
         private float maxSlowTime = 5f;
+        /// <summary>
+        /// 鈍足継続時間
+        /// </summary>
         public float MaxSlowTime { get { return maxSlowTime; } }
         [SerializeField, Range(0f, 1f), Tooltip("鈍足時の減速率")]
         private float slowMagnification = 0.75f;
+        /// <summary>
+        /// 鈍足時の減速率
+        /// </summary>
         public float SlowMagnification { get { return slowMagnification; } }
         [SerializeField, Tooltip("視界妨害時間")]
         private float maxObstructViewTime = 5f;
+        /// <summary>
+        /// 視界妨害時間
+        /// </summary>
         public float MaxObstructViewTime { get { return maxObstructViewTime; } }
         [SerializeField, Range(0f, 1f), Tooltip("視界妨害域（画面の割合）")]
         private float extentObstructView = 0.6f;
+        /// <summary>
+        /// 視界妨害域（画面の割合）
+        /// </summary>
         public float ExtentObstructView { get { return extentObstructView; } }
         [SerializeField, Range(0f, 1f), Tooltip("視界妨害の泥のアルファ値")]
         private float alphaObstructView = 0.5f;
+        /// <summary>
+        /// 視界妨害の泥のアルファ値
+        /// </summary>
         public float AlphaObstructView { get { return alphaObstructView; } }
         //[SerializeField, Tooltip("泥のアルファ値の変化量")]
         //private float alphaSpeedObstructView = 1f;

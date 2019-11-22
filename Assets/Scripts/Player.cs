@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject lightArm = null;
     [SerializeField]
+    private GameManager gameManager = null;
+    [SerializeField]
     private InputManager inputManager = null;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
         beamArm.transform.rotation = inputManager.RC.Rotation * transform.rotation;
         lightArm.transform.position = inputManager.LC.Position;
         lightArm.transform.rotation = inputManager.LC.Rotation * transform.rotation;
-
-        transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x);
+        //旋回
+        transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x * gameManager.Parameter.TrunSpeed);
     }
 }

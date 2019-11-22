@@ -612,6 +612,11 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1052752680}
+    - target: {fileID: 8739201130737212636, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1052752682}
     - target: {fileID: 8290302887651955717, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
         type: 3}
       propertyPath: inputManager
