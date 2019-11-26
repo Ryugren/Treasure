@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     /// ゲームのパラメーター
     /// </summary>
     public ParameterBase Parameter { get { return parameter; } }
+    private void Awake()
+    {
+        Application.targetFrameRate = 72;
+    }
     // Start is called before the first frame update
     void Start()
     {
