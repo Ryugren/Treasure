@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     Camera mainCamera = null;
-    void Start()
+    void Awake()
     {
     }
 
@@ -138,52 +138,78 @@ public class InputManager : MonoBehaviour
             Position = InputTracking.GetLocalPosition(XRNode.CenterEye);
             Rotation = InputTracking.GetLocalRotation(XRNode.CenterEye);
         }
+        //OVRInput.Controller c = OVRInput.GetConnectedControllers();
         //右手（セカンドトリガー）
-        if (!OVRInput.IsControllerConnected(OVRInput.Controller.RTrackedRemote))
-        {
-            Debug.LogWarning("右コントローラーが接続されていません");
-        }
-        else
-        {
-            UpdateController(OVRInput.Controller.RTrackedRemote, RC);
-        }
+        //if (c != OVRInput.Controller.RTrackedRemote)
+        //{
+        //    Debug.LogWarning("右コントローラーが接続されていません");
+        //}
+        //else
+        //{
+            UpdateRController(RC);
+        //}
         //左手（プライマリトリガー）
-        if (!OVRInput.IsControllerConnected(OVRInput.Controller.LTrackedRemote))
-        {
-            Debug.LogWarning("左コントローラーが接続されていません");
-        }
-        else
-        {
-            UpdateController(OVRInput.Controller.LTrackedRemote, LC);
-        }
+        //if (c != OVRInput.Controller.LTrackedRemote)
+        //{
+        //    Debug.LogWarning("左コントローラーが接続されていません");
+        //}
+        //else
+        //{
+            UpdateLController(LC);
+        //}
     }
 
-    private void UpdateController(OVRInput.Controller controller, ControllerInput input)
+    private void UpdateRController(ControllerInput input)
     {
-        input.Button1.Get = OVRInput.Get(OVRInput.Button.One, controller);
-        input.Button1.GetDown = OVRInput.GetDown(OVRInput.Button.One, controller);
-        input.Button1.GetUp = OVRInput.GetUp(OVRInput.Button.One, controller);
+        input.Button1.Get = OVRInput.Get(OVRInput.RawButton.A);
+        input.Button1.GetDown = OVRInput.GetDown(OVRInput.RawButton.A);
+        input.Button1.GetUp = OVRInput.GetUp(OVRInput.RawButton.A);
 
-        input.Button2.Get = OVRInput.Get(OVRInput.Button.Two, controller);
-        input.Button2.GetDown = OVRInput.GetDown(OVRInput.Button.Two, controller);
-        input.Button2.GetUp = OVRInput.GetUp(OVRInput.Button.Two, controller);
+        input.Button2.Get = OVRInput.Get(OVRInput.RawButton.B);
+        input.Button2.GetDown = OVRInput.GetDown(OVRInput.RawButton.B);
+        input.Button2.GetUp = OVRInput.GetUp(OVRInput.RawButton.B);
 
-        input.HandTrigger.Get = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, controller);
-        input.HandTrigger.GetDown = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, controller);
-        input.HandTrigger.GetUp = OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger, controller);
+        input.HandTrigger.Get = OVRInput.Get(OVRInput.RawButton.RHandTrigger);
+        input.HandTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.RHandTrigger);
+        input.HandTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.RHandTrigger);
 
-        input.IndexTrigger.Get = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, controller);
-        input.IndexTrigger.GetDown = OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller);
-        input.IndexTrigger.GetUp = OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, controller);
+        input.IndexTrigger.Get = OVRInput.Get(OVRInput.RawButton.RIndexTrigger);
+        input.IndexTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger);
+        input.IndexTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.RIndexTrigger);
 
-        input.HandTrigger.Axis = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, controller);
-        input.IndexTrigger.Axis = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, controller);
-        input.AxisStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, controller);
+        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+        input.IndexTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+        input.AxisStick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
 
-        input.Position = OVRInput.GetLocalControllerPosition(controller);
-        input.Rotation = OVRInput.GetLocalControllerRotation(controller);
+        input.Position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote);
+        input.Rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
     }
-    
+    private void UpdateLController(ControllerInput input)
+    {
+        input.Button1.Get = OVRInput.Get(OVRInput.RawButton.X);
+        input.Button1.GetDown = OVRInput.GetDown(OVRInput.RawButton.X);
+        input.Button1.GetUp = OVRInput.GetUp(OVRInput.RawButton.X);
+
+        input.Button2.Get = OVRInput.Get(OVRInput.RawButton.Y);
+        input.Button2.GetDown = OVRInput.GetDown(OVRInput.RawButton.Y);
+        input.Button2.GetUp = OVRInput.GetUp(OVRInput.RawButton.Y);
+
+        input.HandTrigger.Get = OVRInput.Get(OVRInput.RawButton.LHandTrigger);
+        input.HandTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.LHandTrigger);
+        input.HandTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.LHandTrigger);
+
+        input.IndexTrigger.Get = OVRInput.Get(OVRInput.RawButton.LIndexTrigger);
+        input.IndexTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger);
+        input.IndexTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger);
+
+        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
+        input.IndexTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
+        input.AxisStick = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+
+        input.Position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTrackedRemote);
+        input.Rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTrackedRemote);
+    }
+
     /// <summary>
     /// 音を振動に変えて、右のコントローラーから流します
     /// </summary>

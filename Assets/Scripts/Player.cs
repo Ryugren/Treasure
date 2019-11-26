@@ -29,15 +29,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //コントローラ（腕）の位置
-        beamArm.transform.position = inputManager.RC.Position;
-        beamArm.transform.rotation = inputManager.RC.Rotation * transform.rotation;
-        lightArm.transform.position = inputManager.LC.Position;
-        lightArm.transform.rotation = inputManager.LC.Rotation * transform.rotation;
         //旋回
         transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x * gameManager.Parameter.TrunSpeed);
         //移動
         Vector3 moveAxis = new Vector3(inputManager.LC.AxisStick.x, 0, inputManager.LC.AxisStick.y) * gameManager.Parameter.MoveSpeed;
         rb.velocity = transform.rotation * moveAxis;
+        //コントローラ（腕）の位置
+        beamArm.transform.position = transform.rotation * inputManager.RC.Position + transform.position;
+        beamArm.transform.localRotation = inputManager.RC.Rotation;
+        lightArm.transform.position = transform.rotation * inputManager.LC.Position + transform.position;
+        lightArm.transform.localRotation = inputManager.LC.Rotation;
     }
 }
