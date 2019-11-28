@@ -566,7 +566,7 @@ MonoBehaviour:
     maxObstructViewTime: 5
     extentObstructView: 0.6
     alphaObstructView: 0.5
-    player: {fileID: 7740474494342530475}
+    player: {fileID: 7876270768369834440}
 --- !u!1 &1340553306
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,21 +844,9 @@ MeshFilter:
 Camera:
   m_CorrespondingSourceObject: {fileID: 7885374720520220545, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
     type: 3}
-  m_PrefabInstance: {fileID: 8908066572508799342}
+  m_PrefabInstance: {fileID: 3162239214513143879}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7740474494342530475 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
-    type: 3}
-  m_PrefabInstance: {fileID: 8908066572508799342}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fcfdae7bddc8f4458a90352176884b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &8908066572508799342
+--- !u!1001 &3162239214513143879
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -870,6 +858,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1052752682}
+    - target: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+        type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 1052752680}
     - target: {fileID: 8040628414142845929, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,20 +923,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1052752682}
-    - target: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
-        type: 3}
-      propertyPath: inputManager
-      value: 
-      objectReference: {fileID: 1052752680}
-    - target: {fileID: 4009298555178607658, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
-        type: 3}
-      propertyPath: inputManager
-      value: 
-      objectReference: {fileID: 1052752680}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+--- !u!114 &7876270768369834440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1644356822457464998, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+    type: 3}
+  m_PrefabInstance: {fileID: 3162239214513143879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fcfdae7bddc8f4458a90352176884b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

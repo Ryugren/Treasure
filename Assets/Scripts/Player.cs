@@ -24,6 +24,15 @@ public class Player : MonoBehaviour
     private bool cameraTypeFlag = false;
     [SerializeField]
     private int angleVisionsNumber = 4;
+    [SerializeField]
+    private float turnFadeOutTime = 1f;
+    [SerializeField]
+    private float turnFadeInTime = 1f;
+    private int fadeState = 0;
+    private float turnCount = 0;
+    private int turnDirection = 0;
+    [SerializeField]
+    private TextureNoise tn = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +48,47 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (inputManager.LC.HandTrigger.GetDown)
+            if (fadeState == 0)
             {
-                transform.Rotate(Vector3.up, -360 / angleVisionsNumber);
+                if (inputManager.LC.HandTrigger.GetDown)
+                {
+                    turnDirection = -1;
+                    fadeState = 1;
+                    turnCount = turnFadeOutTime;
+                }
+                if (inputManager.RC.HandTrigger.GetDown)
+                {
+                    turnDirection = 1;
+                    fadeState = 1;
+                    turnCount = turnFadeOutTime;
+                }
             }
-            if (inputManager.RC.HandTrigger.GetDown)
+            else if (fadeState == 1)
             {
-                transform.Rotate(Vector3.up, 360 / angleVisionsNumber);
+                if (turnCount > 0)
+                {
+                    turnCount = turnCount - Time.deltaTime < 0 ? 0 : turnCount - Time.deltaTime;
+                    tn.AlphaChanged((1 - turnCount) / turnFadeOutTime);
+                }
+                else
+                {
+                    transform.Rotate(Vector3.up, 360 * turnDirection / angleVisionsNumber);
+                    turnCount = turnFadeInTime;
+                    fadeState = 2;
+                }
+            }
+            else if (fadeState == 2)
+            {
+                if (turnCount > 0)
+                {
+                    turnCount = turnCount - Time.deltaTime < 0 ? 0 : turnCount - Time.deltaTime;
+                    tn.AlphaChanged(turnCount / turnFadeInTime);
+                }
+                else
+                {
+                    turnDirection = 0;
+                    fadeState = 0;
+                }
             }
         }
         //移動
