@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //後でボタンでスタートするようにする
-        parameter.StartGameFlag = true;
         //初期化
         parameter.Life = parameter.MaxLife;
     }
@@ -27,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (!parameter.StartGameFlag) return;
+        if (parameter.EndGameFlag) return;
         GameOver();
         CountTimer();
         BeamEnergyRecharge();
@@ -85,14 +84,11 @@ public class GameManager : MonoBehaviour
     }
     private void CountTimer()
     {
-        if (!parameter.EndGameFlag)
+        parameter.CurrentPlayTime += Time.deltaTime;
+        if (parameter.MaxPlayTime - parameter.CurrentPlayTime <= 0)
         {
-            parameter.CurrentPlayTime += Time.deltaTime;
-            if (parameter.MaxPlayTime - parameter.CurrentPlayTime <= 0)
-            {
-                parameter.EndGameFlag = true;
-                parameter.CurrentPlayTime = parameter.MaxPlayTime;
-            }
+            parameter.EndGameFlag = true;
+            parameter.CurrentPlayTime = parameter.MaxPlayTime;
         }
     }
 

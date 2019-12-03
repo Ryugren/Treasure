@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.Parameter.EndGameFlag) return;
         //旋回
         if (cameraTypeFlag)
         {
