@@ -7,9 +7,10 @@ public class BeamArm : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private float distance = 10.5f;
-    Ray ray;
-    RaycastHit hit;
+    private Ray ray;
+    private RaycastHit hit;
     private GameObject parentObject;
+
     void Start()
     {
         parentObject = transform.parent.gameObject;
@@ -24,6 +25,7 @@ public class BeamArm : MonoBehaviour
             {
                 if (gameManager.BeamEnergyIsUsed() == true)
                 {
+                    parentObject.SetActive(true);
                     BeamFiring();
                 }
             }
