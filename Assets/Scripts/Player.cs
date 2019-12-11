@@ -52,13 +52,13 @@ public class Player : MonoBehaviour
         {
             if (fadeState == 0)
             {
-                if (inputManager.LC.HandTrigger.GetDown)
+                if (inputManager.LC.HandTrigger.Axis > 0.5f)
                 {
                     turnDirection = -1;
                     fadeState = 1;
                     turnCount = turnFadeOutTime;
                 }
-                if (inputManager.RC.HandTrigger.GetDown)
+                if (inputManager.RC.HandTrigger.Axis > 0.5f)
                 {
                     turnDirection = 1;
                     fadeState = 1;
@@ -89,6 +89,13 @@ public class Player : MonoBehaviour
                 else
                 {
                     turnDirection = 0;
+                    fadeState = 3;
+                }
+            }
+            else if (fadeState == 3)
+            {
+                if (inputManager.LC.HandTrigger.Axis <= 0.1f && inputManager.RC.HandTrigger.Axis <= 0.1f)
+                {
                     fadeState = 0;
                 }
             }
