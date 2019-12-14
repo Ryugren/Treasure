@@ -208,7 +208,7 @@ public class InputManager : MonoBehaviour
         input.IndexTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger);
         input.IndexTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.RIndexTrigger);
 
-        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
+        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
         input.IndexTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
         input.AxisStick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
 
@@ -233,7 +233,7 @@ public class InputManager : MonoBehaviour
         input.IndexTrigger.GetDown = OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger);
         input.IndexTrigger.GetUp = OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger);
 
-        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
+        input.HandTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger);
         input.IndexTrigger.Axis = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
         input.AxisStick = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
 
