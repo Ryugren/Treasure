@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class HpGaugeUI : MonoBehaviour
 {
-    GameManager.ParameterBase PB = new GameManager.ParameterBase();
+    [SerializeField]
+    private GameManager GM = null;
     public Image HpGauge;
    
     void Update()
     {
-        HpGauge.fillAmount = PB.Life / PB.MaxLife;
+        HpGauge.fillAmount = GM.Parameter.Life / GM.Parameter.MaxLife;
     }
 }
