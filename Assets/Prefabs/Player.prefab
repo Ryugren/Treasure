@@ -6377,7 +6377,7 @@ GameObject:
   - component: {fileID: 8040628414322950902}
   - component: {fileID: 8040628414322950897}
   - component: {fileID: 8040628414322950896}
-  - component: {fileID: 8726680630789630297}
+  - component: {fileID: 913620862}
   m_Layer: 0
   m_Name: LightArm
   m_TagString: Untagged
@@ -6469,7 +6469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610a56e9371b9664cb0d2894eec08659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!108 &8726680630789630297
+--- !u!108 &913620862
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6525,7 +6525,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 5.877472e-39, y: 0, z: 0, w: 2.3510604e-38}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

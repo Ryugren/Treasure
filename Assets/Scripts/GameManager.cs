@@ -50,21 +50,19 @@ public class GameManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// ビームエネルギーを使えるかどうか
+    /// ビームエネルギーを使う
     /// </summary>
     /// <returns></returns>
-    public bool BeamEnergyIsUsed()
+    public void UseEnergy()
     {
         if (parameter.BeamEnergy > 0)
         {
             parameter.BeamEnergy -= Time.deltaTime / parameter.MaxBeamLimitTime;
-            return true;
         }
         else
         {
             parameter.BeamEnergy = 0;
             parameter.IsRecharged = true;
-            return false;
         }
     }
     /// <summary>

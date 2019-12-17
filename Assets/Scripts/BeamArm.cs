@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BeamArm : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager=null;
-    [SerializeField] private InputManager inputManager=null;
+    [SerializeField] private GameManager gameManager = null;
+    [SerializeField] private InputManager inputManager = null;
     [SerializeField] private float distance = 10.5f;
-    [SerializeField] private GameObject parentObject=null;
-    [SerializeField] private GameObject childrenObject=null;
-    private bool raycastFlag=false;
+    [SerializeField] private GameObject parentObject = null;
+    [SerializeField] private GameObject childrenObject = null;
+    private bool raycastFlag = false;
 
     private Ray ray;
     private RaycastHit hit;
@@ -25,23 +25,20 @@ public class BeamArm : MonoBehaviour
 
     void Update()
     {
-        if (inputManager.RC.IndexTrigger.Axis > 0.5f)
+        if (inputManager.RC.IndexTrigger.Axis > 0.5f && gameManager.Parameter.BeamFlag == true)
         {
-            if (gameManager.Parameter.BeamFlag==true)
-            {
-　　　　　　　　　gameManager.BeamEnergyIsUsed();
+            gameManager.UseEnergy();
 
-                childrenObject.SetActive(true);
-                raycastFlag = true;
-                BeamFiring();
-            }
+            childrenObject.SetActive(true);
+            raycastFlag = true;
+            BeamFiring();
         }
         else
         {
             childrenObject.SetActive(false);
             raycastFlag = false;
         }
-        
+
         if (raycastFlag == true)
         {
             BeamFiring();
