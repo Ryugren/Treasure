@@ -69,9 +69,9 @@ public class Player : MonoBehaviour
         Vector3 moveAxis = new Vector3(inputManager.LC.AxisStick.x, 0, inputManager.LC.AxisStick.y) * gameManager.Parameter.MoveSpeed;
         rb.velocity = transform.rotation * moveAxis;
         //コントローラ（腕）の位置
-        beamArm.transform.position = transform.rotation * inputManager.RC.Position + transform.position;
+        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + new Vector3(0, 0, 1)) + transform.position;
         beamArm.transform.localRotation = inputManager.RC.Rotation;
-        lightArm.transform.position = transform.rotation * inputManager.LC.Position + transform.position;
+        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + new Vector3(0, 0, 1)) + transform.position;
         lightArm.transform.localRotation = inputManager.LC.Rotation;
     }
 
