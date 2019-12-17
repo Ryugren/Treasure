@@ -6257,10 +6257,13 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   inputManager: {fileID: 0}
   rb: {fileID: 8040628414142845928}
-  cameraTypeFlag: 0
-  angleVisionsNumber: 4
-  turnFadeOutTime: 1
-  turnFadeInTime: 1
+  cameraTypeFlag: 2
+  angleVisionCutNumber: 4
+  turnFadeOutTimeStop: 0.1
+  turnFadeOutTime: 0.5
+  turnFadeInTimeStop: 1
+  turnFadeInTime: 0.5
+  turnEndTime: 0.1
   tn: {fileID: 3162239215736382776}
 --- !u!1 &8040628414205957051
 GameObject:
