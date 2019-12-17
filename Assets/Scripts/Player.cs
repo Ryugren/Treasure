@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     private float turnTimeCount = 0;
     [SerializeField]
     private TextureNoise tn = null;
-    private float totalTurnTime{ get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop; } }
+    private float totalTurnTime{ get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop + turnEndTime; } }
     // Start is called before the first frame update
     void Start()
     {
