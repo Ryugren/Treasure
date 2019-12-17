@@ -25,26 +25,24 @@ public class BeamArm : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.BeamEnergyIsUsed() == true)
+        if (inputManager.RC.IndexTrigger.Axis > 0.5f)
         {
-            //if (inputManager.RC.IndexTrigger.Get)
-            //{
-                if (inputManager.RC.IndexTrigger.Axis > 0.5f)
-                {
+            if (gameManager.Parameter.BeamFlag==true)
+            {
+　　　　　　　　　gameManager.BeamEnergyIsUsed();
 
-                    childrenObject.SetActive(true);
-                    raycastFlag=true;
-                    BeamFiring();
-
-                }
-            //}
+                childrenObject.SetActive(true);
+                raycastFlag = true;
+                BeamFiring();
+            }
         }
         else
         {
             childrenObject.SetActive(false);
-            raycastFlag=false;
+            raycastFlag = false;
         }
-        if(raycastFlag==true)
+        
+        if (raycastFlag == true)
         {
             BeamFiring();
         }
