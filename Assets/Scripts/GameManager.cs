@@ -176,6 +176,9 @@ public class GameManager : MonoBehaviour
         /// </summary>
         public float CurrentPlayTime { get; set; }
         [SerializeField]
+        private Vector3 playerPosition = Vector3.zero;
+        public Vector3 PlayerPosition{ get {return playerPosition; } }
+        [SerializeField]
         private Player player = null;
         /// <summary>
         /// プレイヤーの向き
