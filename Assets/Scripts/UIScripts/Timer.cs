@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         //CT -= Time.deltaTime;
-        //minutes = (int)CT;
-        countText.text = (int)(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime) + " S".ToString();
+       // minutes = (int)(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime);
+        countText.text = ((int)(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime)).ToString();
     }
 }
