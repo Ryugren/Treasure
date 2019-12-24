@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 485178}
   - component: {fileID: 3340272}
   - component: {fileID: 2350232}
+  - component: {fileID: -3346236380025347255}
   m_Layer: 0
   m_Name: Crystal_Set_White3
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-3346236380025347255
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300042, guid: 3473cf405d0965a4893f745be47a3ce8, type: 3}

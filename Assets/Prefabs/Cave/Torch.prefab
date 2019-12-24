@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 425362}
   - component: {fileID: 19825362}
   - component: {fileID: 19925362}
+  - component: {fileID: 215310018566244718}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -4716,3 +4717,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!64 &215310018566244718
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}

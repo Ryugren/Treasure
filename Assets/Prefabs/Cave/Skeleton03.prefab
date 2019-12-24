@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 489344}
   - component: {fileID: 3385474}
   - component: {fileID: 2370886}
+  - component: {fileID: -6683138519919021817}
   m_Layer: 0
   m_Name: Skeleton03
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &-6683138519919021817
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300042, guid: 844c7b20011f7654b9c8d1788484ea96, type: 3}
