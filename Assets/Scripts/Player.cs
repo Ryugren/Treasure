@@ -25,23 +25,18 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int angleVisionCutNumber = 4;
     private int angleVisionNumber = 0;
-    [SerializeField]
-    private float turnFadeOutTimeStop = 0.1f;
-    [SerializeField]
-    private float turnFadeOutTime = 1f;
-    [SerializeField]
-    private float turnFadeInTimeStop = 0.1f;
-    [SerializeField]
-    private float turnFadeInTime = 1f;
-    [SerializeField]
-    private float turnEndTime = 0.1f;
     private int fadeState = 0;
     private float turnFlagCount = 0;
     private int turnDirection = 0;
     private float turnTimeCount = 0;
     [SerializeField]
     private TextureNoise tn = null;
-    private float totalTurnTime{ get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop + turnEndTime; } }
+    private float turnFadeOutTime { get { return gameManager.Parameter.TurnTime.FadeOut; } }
+    private float turnFadeOutTimeStop { get { return gameManager.Parameter.TurnTime.FadeOutStop; } }
+    private float turnFadeInTime { get { return gameManager.Parameter.TurnTime.FadeIn; } }
+    private float turnFadeInTimeStop { get { return gameManager.Parameter.TurnTime.FadeInStop; } }
+    private float turnEndTime { get { return gameManager.Parameter.TurnTime.End; } }
+    private float totalTurnTime { get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop + turnEndTime; } }
     // Start is called before the first frame update
     void Start()
     {
@@ -70,15 +65,15 @@ public class Player : MonoBehaviour
         Vector3 moveAxis = new Vector3(inputManager.LC.AxisStick.x, 0, inputManager.LC.AxisStick.y) * gameManager.Parameter.MoveSpeed;
         rb.velocity = transform.rotation * moveAxis;
         //コントローラ（腕）の位置
-        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + new Vector3(0, 0, 1)) + transform.position;
+        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + new Vector3(0, gameManager.Parameter.HandPosition.y, 1)) + transform.position;
         beamArm.transform.localRotation = inputManager.RC.Rotation;
-        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + new Vector3(0, 0, 1)) + transform.position;
+        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + new Vector3(0, gameManager.Parameter.HandPosition.y, 1)) + transform.position;
         lightArm.transform.localRotation = inputManager.LC.Rotation;
     }
 
     void CameraMove1()
     {
-        transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x * gameManager.Parameter.TrunSpeed);
+        transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x * totalTurnTime);
     }
 
     void CameraMove2()

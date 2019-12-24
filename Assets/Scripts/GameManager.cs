@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        if(parameter.Life <= 0)
+        if (parameter.Life <= 0)
         {
             parameter.EndGameFlag = true;
             parameter.Life = 0;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (parameter.IsRecharged)
         {
             parameter.BeamEnergy += Time.deltaTime / parameter.MaxBeamEnergyRechargeTime;
-            if(parameter.BeamEnergy >= 1f)
+            if (parameter.BeamEnergy >= 1f)
             {
                 parameter.IsRecharged = false;
                 parameter.BeamEnergy = 1f;
@@ -89,7 +89,25 @@ public class GameManager : MonoBehaviour
             parameter.CurrentPlayTime = parameter.MaxPlayTime;
         }
     }
-
+    [System.Serializable]
+    public class TurnTimes
+    {
+        [SerializeField, Tooltip("フェイドアウト開始の待ち時間")]
+        private float fadeOutStop = 0.1f;
+        public float FadeOutStop { get { return fadeOutStop; } }
+        [SerializeField, Tooltip("フェイドアウト開始からの必要時間")]
+        private float fadeOut = 0.25f;
+        public float FadeOut { get { return fadeOut; } }
+        [SerializeField, Tooltip("フェイドイン開始の待ち時間")]
+        private float fadeInStop = 0.5f;
+        public float FadeInStop { get { return fadeInStop; } }
+        [SerializeField, Tooltip("フェイドイン開始からの必要時間")]
+        private float fadeIn = 0.25f;
+        public float FadeIn { get { return fadeIn; } }
+        [SerializeField, Tooltip("フェイドイン終了後の経過時間")]
+        private float end = 0.1f;
+        public float End { get { return end; } }
+    }
     [System.Serializable]
     public class ParameterBase
     {
@@ -99,12 +117,12 @@ public class GameManager : MonoBehaviour
         /// 移動速度
         /// </summary>
         public float MoveSpeed { get { return moveSpeed; } }
-        [SerializeField, Tooltip("旋回速度")]
-        private float turnSpeed = 5;
+        [SerializeField, Tooltip("旋回にかかる時間")]
+        private TurnTimes turnTime = null;
         /// <summary>
-        /// 旋回速度
+        /// 旋回にかかる時間
         /// </summary>
-        public float TrunSpeed { get { return turnSpeed; } }
+        public TurnTimes TurnTime { get { return turnTime; } }
         [SerializeField, Tooltip("プレイ時間")]
         private float maxPlayTime = 180f;
         /// <summary>
@@ -177,8 +195,14 @@ public class GameManager : MonoBehaviour
         public float CurrentPlayTime { get; set; }
         [SerializeField]
         private Vector3 playerPosition = Vector3.zero;
-        public Vector3 PlayerPosition{ get {return playerPosition; } }
+        public Vector3 PlayerPosition { get { return playerPosition; } }
         [SerializeField]
+        private Vector3 handPosition = Vector3.zero;
+        public Vector3 HandPosition
+        {
+            get { return handPosition; }
+        }
+            [SerializeField]
         private Player player = null;
         /// <summary>
         /// プレイヤーの向き
