@@ -15,7 +15,7 @@ public class ReadyGame : MonoBehaviour
     private GameManager gameManager = null;
     private void Update()
     {
-        if (inputManager.LC.Button1.GetDown || inputManager.RC.Button1.GetDown)
+        if (inputManager.LC.IndexTrigger.Axis > 0.5f)
         {
             readyGameUI.SetActive(false);
             gameManager.GameStart();
