@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class LightArm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private InputManager inputManager = null;
+    [SerializeField] private Light lightComponent = null;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (inputManager.LC.IndexTrigger.Axis > 0.5f)
+        {
+            lightComponent.enabled = true;
+        }
+        else
+        {
+            lightComponent.enabled = false;
+        }
     }
 }
