@@ -25,6 +25,7 @@ public class BeamArm : MonoBehaviour
 
     void Update()
     {
+        //起動
         if (inputManager.RC.IndexTrigger.Axis > 0.5f && gameManager.Parameter.BeamFlag == true)
         {
             gameManager.UseEnergy();
@@ -33,12 +34,13 @@ public class BeamArm : MonoBehaviour
             raycastFlag = true;
             BeamFiring();
         }
+        //起動しない
         else
         {
             childrenObject.SetActive(false);
             raycastFlag = false;
         }
-
+        //罠チェック
         if (raycastFlag == true)
         {
             BeamFiring();
@@ -51,7 +53,12 @@ public class BeamArm : MonoBehaviour
     {
         if (Physics.Raycast(ray, out hit, distance))
         {
-            hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
+            if(hit.collider.tag == "Gimmick")
+            {
+                SuperGimmicks sg = hit.collider.GetComponent<SuperGimmicks>();
+                sg.Activate(gameManager);
+            }
+            //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
         Debug.DrawRay(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward * distance, Color.red);
     }

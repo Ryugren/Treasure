@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter:
-    moveSpeed: 2.5
+    moveSpeed: 7.5
     turnTime:
       fadeOutStop: 0.05
       fadeOut: 0.05
@@ -78,8 +78,8 @@ MonoBehaviour:
     maxObstructViewTime: 5
     extentObstructView: 0.6
     alphaObstructView: 0.5
-    playerPosition: {x: 0, y: 2, z: 0}
-    handPosition: {x: 0, y: 1, z: 0}
+    playerPosition: {x: 0, y: 0, z: 0}
+    handPosition: {x: 0, y: -1, z: 0}
     player: {fileID: 0}
 --- !u!114 &9007507259418171431
 MonoBehaviour:

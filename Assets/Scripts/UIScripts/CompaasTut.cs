@@ -7,7 +7,7 @@ public class CompaasTut : MonoBehaviour
 {
     public RawImage CompassImage;
     public Transform Player;
-    public Text CompassDirectionText;
+    //public Text CompassDirectionText;
 
     void Start()
     {
@@ -18,17 +18,17 @@ public class CompaasTut : MonoBehaviour
     {
         CompassImage.uvRect = new Rect(Player.localEulerAngles.y / 360, 0, 1, 1);
 
-        Vector3 forward = Player.transform.forward;
+        //Vector3 forward = Player.transform.forward;
 
-        forward.y = 0;
+        //forward.y = 0;
 
-        float headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
-        headingAngle = 5 * (Mathf.RoundToInt(headingAngle / 5.0f));
+        //float headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
+        //headingAngle = 5 * (Mathf.RoundToInt(headingAngle / 5.0f));
 
-        int displayAngle;
-        displayAngle = Mathf.RoundToInt(headingAngle);
+        //int displayAngle;
+        //displayAngle = Mathf.RoundToInt(headingAngle);
 
-        switch (displayAngle)
+        /*switch (displayAngle)
         {
             case 0:
                 CompassDirectionText.text = "N";
@@ -63,6 +63,6 @@ public class CompaasTut : MonoBehaviour
                 break;
 
 
-        }
+        }*/
     }
 }
