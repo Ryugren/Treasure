@@ -20,15 +20,15 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_AmbientSkyColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
   m_AmbientEquatorColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
-  m_AmbientIntensity: 2.63
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
-  m_FlareStrength: 1
+  m_FlareStrength: 0.181
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 3359794179812938011}
+    - target: {fileID: 9007507259418171427, guid: eb775feb9668b604ba1e97d34b2be018,
+        type: 3}
+      propertyPath: testControl
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9007507259418171431, guid: eb775feb9668b604ba1e97d34b2be018,
         type: 3}
       propertyPath: readyGameUI
@@ -371,12 +376,12 @@ PrefabInstance:
     - target: {fileID: 9007507259418171425, guid: eb775feb9668b604ba1e97d34b2be018,
         type: 3}
       propertyPath: parameter.playerPosition.y
-      value: -10
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 9007507259418171425, guid: eb775feb9668b604ba1e97d34b2be018,
         type: 3}
       propertyPath: parameter.handPosition.y
-      value: -11
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb775feb9668b604ba1e97d34b2be018, type: 3}
@@ -414,6 +419,10 @@ PrefabInstance:
     - target: {fileID: 184450, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
       propertyPath: m_Name
       value: Cave_Set4
+      objectReference: {fileID: 0}
+    - target: {fileID: 184450, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 489096, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
       propertyPath: m_LocalPosition.x
@@ -461,15 +470,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 489096, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 489096, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 489096, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b57d8146f6b2584eb5581d360c6e546, type: 3}
@@ -608,6 +617,34 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.w
       value: 6.211325e-13
       objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_SpotAngle
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 913620862, guid: b487c99fcbc8ef548b2ccee3ec2c3c43, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8040628415589459505, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
         type: 3}
       propertyPath: field of view
@@ -616,6 +653,16 @@ PrefabInstance:
     - target: {fileID: 6662499912596409484, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040628414205957051, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040628415338145892, guid: b487c99fcbc8ef548b2ccee3ec2c3c43,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
