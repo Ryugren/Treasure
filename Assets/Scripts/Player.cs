@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private GameObject lightArm = null;
     [SerializeField]
     private GameManager gameManager = null;
+    public GameManager GM { get { return gameManager; } }
     [SerializeField]
     private InputManager inputManager = null;
     [SerializeField]
