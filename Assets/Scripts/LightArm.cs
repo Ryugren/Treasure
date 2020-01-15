@@ -44,9 +44,9 @@ public class LightArm : MonoBehaviour
     {
         if (Physics.Raycast(ray, out hit, distance))
         {
-            if (hit.collider.tag == "Gimmick")
+            if (hit.collider.tag == "Key")
             {
-                SuperGimmicks sg = hit.collider.GetComponent<SuperGimmicks>();
+                SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
                 sg.Activate(gameManager);
             }
             //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;

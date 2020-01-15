@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gimmick
   - Anchor
+  - Key
   layers:
   - Default
   - TransparentFX
