@@ -16,13 +16,13 @@ public class Player : MonoBehaviour
     private GameObject lightArm = null;
     [SerializeField]
     private GameManager gameManager = null;
-    public GameManager GM { get { return gameManager; } }
     [SerializeField]
     private InputManager inputManager = null;
     [SerializeField]
     private Rigidbody rb = null;
     [SerializeField]
     private int cameraTypeFlag = 1;
+    private float damageTimeCount = 0f;
     [SerializeField]
     private int angleVisionCutNumber = 4;
     private int angleVisionNumber = 0;
@@ -49,6 +49,10 @@ public class Player : MonoBehaviour
     {
         if (!gameManager.Parameter.StartGameFlag) return;
         if (gameManager.Parameter.EndGameFlag) return;
+        if (damageTimeCount > 0)
+        {
+            damageTimeCount -= Time.deltaTime;
+        }
         //旋回
         switch (cameraTypeFlag)
         {
@@ -225,5 +229,12 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
             }
         }
+    }
+
+    public void Damage(float value)
+    {
+        if (damageTimeCount > 0) return;
+        gameManager.Damage(value);
+        damageTimeCount = 1f;
     }
 }
