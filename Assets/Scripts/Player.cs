@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
     private InputManager inputManager = null;
     [SerializeField]
     private Rigidbody rb = null;
-    [SerializeField]
-    private int cameraTypeFlag = 1;
     private float damageTimeCount = 0f;
     [SerializeField]
     private int angleVisionCutNumber = 4;
@@ -54,87 +52,18 @@ public class Player : MonoBehaviour
             damageTimeCount -= Time.deltaTime;
         }
         //旋回
-        switch (cameraTypeFlag)
-        {
-            case 0:
-                CameraMove1();
-                break;
-            case 1:
-                CameraMove2();
-                break;
-            case 2:
-                CameraMove3();
-                break;
-        }
+        CameraMove();
         //移動
         Vector3 moveAxis = new Vector3(inputManager.LC.AxisStick.x, 0, inputManager.LC.AxisStick.y) * gameManager.Parameter.MoveSpeed;
         rb.velocity = transform.rotation * moveAxis;
         //コントローラ（腕）の位置
-        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + new Vector3(0, gameManager.Parameter.HandPosition.y, 1)) + transform.position;
+        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + gameManager.Parameter.HandPosition) + transform.position;
         beamArm.transform.localRotation = inputManager.RC.Rotation;
-        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + new Vector3(0, gameManager.Parameter.HandPosition.y, 1)) + transform.position;
+        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + gameManager.Parameter.HandPosition) + transform.position;
         lightArm.transform.localRotation = inputManager.LC.Rotation;
+        //テスト処理
     }
-
-    void CameraMove1()
-    {
-        transform.Rotate(Vector3.up, inputManager.RC.AxisStick.x * totalTurnTime);
-    }
-
-    void CameraMove2()
-    {
-        if (fadeState == 0)
-        {
-            if (inputManager.LC.HandTrigger.Axis > 0.5f)
-            {
-                turnDirection = -1;
-                fadeState = 1;
-                turnFlagCount = turnFadeOutTime;
-            }
-            if (inputManager.RC.HandTrigger.Axis > 0.5f)
-            {
-                turnDirection = 1;
-                fadeState = 1;
-                turnFlagCount = turnFadeOutTime;
-            }
-        }
-        else if (fadeState == 1)
-        {
-            if (turnFlagCount > 0)
-            {
-                turnFlagCount = turnFlagCount - Time.deltaTime < 0 ? 0 : turnFlagCount - Time.deltaTime;
-                tn.AlphaChanged((1 - turnFlagCount) / turnFadeOutTime);
-            }
-            else
-            {
-                transform.Rotate(Vector3.up, 360 * turnDirection / angleVisionCutNumber);
-                turnFlagCount = turnFadeInTime;
-                fadeState = 2;
-            }
-        }
-        else if (fadeState == 2)
-        {
-            if (turnFlagCount > 0)
-            {
-                turnFlagCount = turnFlagCount - Time.deltaTime < 0 ? 0 : turnFlagCount - Time.deltaTime;
-                tn.AlphaChanged(turnFlagCount / turnFadeInTime);
-            }
-            else
-            {
-                turnDirection = 0;
-                fadeState = 3;
-            }
-        }
-        else if (fadeState == 3)
-        {
-            if (inputManager.LC.HandTrigger.Axis <= 0.1f && inputManager.RC.HandTrigger.Axis <= 0.1f)
-            {
-                fadeState = 0;
-            }
-        }
-    }
-
-    void CameraMove3()
+    void CameraMove()
     {
         switch (fadeState)
         {
@@ -230,11 +159,14 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     public void Damage(float value)
     {
         if (damageTimeCount > 0) return;
         gameManager.Damage(value);
         damageTimeCount = 1f;
+    }
+    public void Slow()
+    {
+        gameManager.Parameter.SlowMoveFlag = true;
     }
 }

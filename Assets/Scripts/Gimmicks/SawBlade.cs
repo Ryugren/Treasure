@@ -14,6 +14,7 @@ public class SawBlade : SuperGimmicks
         if (other.name == "Foot")
         {
             other.GetComponent<Foot>().Player.Damage(5);
+            IsBreaked = true;
         }
     }
 }

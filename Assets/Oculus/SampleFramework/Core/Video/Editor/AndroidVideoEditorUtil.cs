@@ -9,7 +9,9 @@ public class AndroidVideoEditorUtil
     private static readonly string videoPlayerFileName = "Assets/Oculus/SampleFramework/Core/Video/Plugins/Android/java/com/oculus/videoplayer/NativeVideoPlayer.java";
     private static readonly string disabledPlayerFileName = videoPlayerFileName + ".DISABLED";
 
+#if !UNITY_2018_2_OR_NEWER
     private static readonly string gradleSourceSetPath = "$projectDir/../../Assets/Oculus/SampleFramework/Core/Video/Plugins/Android/java";
+#endif
 
     private static readonly string audio360PluginPath = "Assets/Oculus/SampleFramework/Core/Video/Plugins/Android/Audio360/audio360.aar";
     private static readonly string audio360Exo28PluginPath = "Assets/Oculus/SampleFramework/Core/Video/Plugins/Android/Audio360/audio360-exo28.aar";

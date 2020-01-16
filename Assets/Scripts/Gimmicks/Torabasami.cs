@@ -13,7 +13,10 @@ public class Torabasami : SuperGimmicks
         if (IsBreaked) return;
         if (other.name == "Foot")
         {
-            other.GetComponent<Foot>().Player.Damage(5);
+            Foot foot = other.GetComponent<Foot>();
+            foot.Player.Damage(5);
+            foot.Player.Slow();
+            IsBreaked = true;
         }
     }
 }
