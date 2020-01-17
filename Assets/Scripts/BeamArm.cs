@@ -13,10 +13,11 @@ public class BeamArm : MonoBehaviour
 
     private Ray ray;
     private RaycastHit hit;
-    public int mask = 1 << 8;
+    public int mask;
 
     void Awake()
     {
+        mask = LayerMask.GetMask("Gimmick");
         childrenObject.SetActive(false);
     }
     void Start()

@@ -13,9 +13,11 @@ public class LightArm : MonoBehaviour
     [SerializeField] private GameObject parentObject = null;
     private Ray ray;
     private RaycastHit hit;
-    public int mask = 1 << 9;
-    void Start()
+    public int mask;
+
+    void Awake()
     {
+        mask = LayerMask.GetMask("Key");
     }
 
     void Update()
@@ -45,10 +47,8 @@ public class LightArm : MonoBehaviour
         ray = new Ray(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward);
         if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
         {
-            Debug.Log(hit.collider);
             if (hit.collider.tag == "Key")
             {
-                Debug.Log(2);
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
                 sg.Activate(gameManager);
             }
