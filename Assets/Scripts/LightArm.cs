@@ -9,13 +9,13 @@ public class LightArm : MonoBehaviour
     [SerializeField] private Light lightComponent = null;
     private bool releaseFlag = true;
 
-    [SerializeField] private float distance = 10.5f;
+    //[SerializeField] private float distance = 10.5f;
     [SerializeField] private GameObject parentObject = null;
     private Ray ray;
     private RaycastHit hit;
+    public int mask = 1 << 9;
     void Start()
     {
-        ray = new Ray(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward);
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class LightArm : MonoBehaviour
                 releaseFlag = false;
             }
         }
-        else if(inputManager.LC.IndexTrigger.GetUp)
+        else if (inputManager.LC.IndexTrigger.GetUp)
         {
             releaseFlag = true;
         }
@@ -42,15 +42,18 @@ public class LightArm : MonoBehaviour
     /// </summary>
     void LightFiring()
     {
-        if (Physics.Raycast(ray, out hit, distance))
+        ray = new Ray(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward);
+        if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
         {
+            Debug.Log(hit.collider);
             if (hit.collider.tag == "Key")
             {
+                Debug.Log(2);
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
                 sg.Activate(gameManager);
             }
             //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
-        Debug.DrawRay(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward * distance, Color.red);
+        Debug.DrawRay(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward * float.MaxValue, Color.red);
     }
 }
