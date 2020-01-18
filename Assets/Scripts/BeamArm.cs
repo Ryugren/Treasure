@@ -8,7 +8,7 @@ public class BeamArm : MonoBehaviour
     [SerializeField] private InputManager inputManager = null;
     //[SerializeField] private float distance = 10.5f;
     [SerializeField] private GameObject parentObject = null;
-    [SerializeField] private GameObject childrenObject = null;
+    [SerializeField] private ParticleSystem childrenParticle = null;
     private bool raycastFlag = false;
 
     private Ray ray;
@@ -18,7 +18,7 @@ public class BeamArm : MonoBehaviour
     void Awake()
     {
         mask = LayerMask.GetMask("Gimmick");
-        childrenObject.SetActive(false);
+        childrenParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
     void Start()
     {
@@ -31,14 +31,14 @@ public class BeamArm : MonoBehaviour
         {
             gameManager.UseEnergy();
 
-            childrenObject.SetActive(true);
+            childrenParticle.Play(true);
             raycastFlag = true;
             BeamFiring();
         }
         //起動しない
         else
         {
-            childrenObject.SetActive(false);
+            childrenParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             raycastFlag = false;
         }
         //罠チェック
