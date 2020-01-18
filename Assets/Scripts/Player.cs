@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private int turnDirection = 0;
     private float turnTimeCount = 0;
     [SerializeField]
-    private TextureNoise tn = null;
+    private TextureNoise[] tns = null;
     private float turnFadeOutTime { get { return gameManager.Parameter.TurnTime.FadeOut; } }
     private float turnFadeOutTimeStop { get { return gameManager.Parameter.TurnTime.FadeOutStop; } }
     private float turnFadeInTime { get { return gameManager.Parameter.TurnTime.FadeIn; } }
@@ -100,7 +100,10 @@ public class Player : MonoBehaviour
                 if (turnFlagCount > 0)
                 {
                     turnFlagCount = turnFlagCount - Time.deltaTime;
-                    tn.AlphaChanged(1 - (turnFlagCount / turnFadeOutTime));
+                    foreach (TextureNoise it in tns) 
+                    {
+                        it.AlphaChanged(1 - (turnFlagCount / turnFadeOutTime));
+                    }
                 }
                 else
                 {
@@ -123,7 +126,10 @@ public class Player : MonoBehaviour
                 if (turnFlagCount > 0)
                 {
                     turnFlagCount = turnFlagCount - Time.deltaTime;
-                    tn.AlphaChanged(turnFlagCount / turnFadeInTime);
+                    foreach (TextureNoise it in tns)
+                    {
+                        it.AlphaChanged(turnFlagCount / turnFadeInTime);
+                    }
                 }
                 else
                 {
