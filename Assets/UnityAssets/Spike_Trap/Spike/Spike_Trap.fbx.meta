@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: f1c5f1cd7765bfe42a554d73b9e9e034
+ModelImporter:
+  serializedVersion: 28
+  internalIDToNameTable:
+  - first:
+      43: 4300000
+    second: Bottom_Pivot_Uv
+  - first:
+      43: 4300002
+    second: Mid_Pivot_Uv
+  - first:
+      43: 4300004
+    second: Bottom_Arms_Uv
+  - first:
+      43: 4300006
+    second: PM3D_Cube3D_1
+  - first:
+      43: 4300008
+    second: top_Pivot
+  - first:
+      43: 4300010
+    second: Top_Arms
+  - first:
+      43: 4300012
+    second: Bottom_Spike_Block
+  - first:
+      43: 4300014
+    second: Spike_Top_Arm
+  - first:
+      74: 7400000
+    second: Action //// Spike_Trap
+  - first:
+      1001: 100100000
+    second: DataTemplate __Singleton__
+  - first:
+      74: 7176209919637214875
+    second: Action
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_001__Bottom_Spike_Block_bm
+    second: {fileID: 2100000, guid: 03dcbed265cb8de479b89a255ee4e2dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_002
+    second: {fileID: 2100000, guid: 258350fb31f3cbe44b4a090fadebe948, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_003__Top_Arms_bmp
+    second: {fileID: 2100000, guid: 9a83f666eb1689e468954be99c24feb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_004__top_Pivot_bmp
+    second: {fileID: 2100000, guid: 61d68fa05e1d61248880799b0ec3e0fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_005__PM3D_Cube3D_1_bmp
+    second: {fileID: 2100000, guid: 520e42f3b8f53ed4091ddb9d5108ddc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_006
+    second: {fileID: 2100000, guid: b50788800b33a8a448837c6ab89d16a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat_007
+    second: {fileID: 2100000, guid: e1ee50ab53e4f7142bc4b5d6179a4528, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 3
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

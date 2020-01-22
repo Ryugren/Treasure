@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 public class Torabasami : SuperGimmicks
 {
-    public bool IsBreaked { get; private set; } = false; 
+    public bool IsBreaked { get; private set; } = false;
+    [SerializeField]
+    private Animator animator = null;
     public override void Activate(GameManager gm)
     {
         if (IsBreaked) return;
@@ -16,6 +18,7 @@ public class Torabasami : SuperGimmicks
             Foot foot = other.GetComponent<Foot>();
             foot.Player.Damage(5);
             foot.Player.Slow();
+            animator.SetBool("Hit", true);
             IsBreaked = true;
         }
     }
