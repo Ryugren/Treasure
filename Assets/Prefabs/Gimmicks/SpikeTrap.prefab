@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619279}
   - component: {fileID: 7438771443015831349}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mid_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7438771443020619275}
   - component: {fileID: 7438771443021913657}
   - component: {fileID: 7438771443023043833}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619277}
   - component: {fileID: 7438771443015831355}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spike_Back_Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619269}
   - component: {fileID: 7438771443015831351}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619281}
   - component: {fileID: 7438771443015831359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619287}
   - component: {fileID: 7438771443015831357}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: top_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7438771443020619283}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spike_Top_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 7438771443020619273}
   - component: {fileID: 7438771443021913663}
   - component: {fileID: 7438771443023043839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom_Spike_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7438771443020619325}
   - component: {fileID: 7438771443015831353}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top_Spike_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7408937879562836977}
   - component: {fileID: 7438771443015293949}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpikeTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,6 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: d84a90dd99a89ca4cb6898a247905895, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: f1c5f1cd7765bfe42a554d73b9e9e034, type: 3}
   - {fileID: 7400000, guid: d84a90dd99a89ca4cb6898a247905895, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1

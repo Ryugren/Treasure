@@ -1134,11 +1134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap
       objectReference: {fileID: 0}
-    - target: {fileID: 8275595085010441512, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 7408937879562836977, guid: 2bb8767fedd23c64f8c59efd9122f884,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1193,51 +1188,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103659, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103667, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103655, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103657, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103653, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103661, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103665, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103663, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438771443021103709, guid: 2bb8767fedd23c64f8c59efd9122f884,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb8767fedd23c64f8c59efd9122f884, type: 3}
