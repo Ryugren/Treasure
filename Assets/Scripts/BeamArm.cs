@@ -13,7 +13,7 @@ public class BeamArm : MonoBehaviour
 
     private Ray ray;
     private RaycastHit hit;
-    public int mask;
+    private int mask;
 
     void Awake()
     {

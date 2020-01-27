@@ -13,7 +13,7 @@ public class LightArm : MonoBehaviour
     [SerializeField] private GameObject parentObject = null;
     private Ray ray;
     private RaycastHit hit;
-    public int mask;
+    private int mask;
 
     void Awake()
     {

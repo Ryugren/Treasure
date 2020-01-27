@@ -8,12 +8,15 @@ public class SpikeTrap : SuperGimmicks
         base.Activate(gm);
         IsBreaked = true;
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnCollisionStay(Collision collision)
     {
-        if (IsBreaked) return;
-        if (other.name == "Foot")
         {
-            other.GetComponent<Foot>().Player.Damage(5);
+            if (IsBreaked) return;
+            if (collision.gameObject.name == "Foot")
+            {
+                collision.gameObject.GetComponent<Foot>().Player.Damage(5);
+            }
         }
     }
 }
