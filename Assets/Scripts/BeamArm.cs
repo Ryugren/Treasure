@@ -20,12 +20,10 @@ public class BeamArm : MonoBehaviour
         mask = LayerMask.GetMask("Gimmick");
         childrenParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
-    void Start()
-    {
-    }
 
     void Update()
     {
+        if (!gameManager.Parameter.StartGameFlag || gameManager.Parameter.EndGameFlag) return;
         //起動
         if (inputManager.RC.IndexTrigger.Axis > 0.5f && gameManager.Parameter.BeamFlag == true)
         {
