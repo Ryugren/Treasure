@@ -8,12 +8,12 @@ public class Player : MonoBehaviour
     /// ビーム、右アーム
     /// </summary>
     [SerializeField]
-    private GameObject beamArm = null;
+    private GameObject beamController = null;
     /// <summary>
     /// ライト、左アーム
     /// </summary>
     [SerializeField]
-    private GameObject lightArm = null;
+    private GameObject lightController = null;
     [SerializeField]
     private GameManager gameManager = null;
     public GameManager GM { get { return gameManager; } }
@@ -59,10 +59,10 @@ public class Player : MonoBehaviour
         Vector3 moveAxis = new Vector3(inputManager.LC.AxisStick.x, 0, inputManager.LC.AxisStick.y) * gameManager.Parameter.MoveSpeed;
         rb.velocity = transform.rotation * moveAxis;
         //コントローラ（腕）の位置
-        beamArm.transform.position = transform.rotation * (inputManager.RC.Position + gameManager.Parameter.HandPosition) + transform.position;
-        beamArm.transform.localRotation = inputManager.RC.Rotation;
-        lightArm.transform.position = transform.rotation * (inputManager.LC.Position + gameManager.Parameter.HandPosition) + transform.position;
-        lightArm.transform.localRotation = inputManager.LC.Rotation;
+        beamController.transform.position = transform.rotation * (inputManager.RC.Position + gameManager.Parameter.HandPosition) + transform.position;
+        beamController.transform.localRotation = inputManager.RC.Rotation;
+        lightController.transform.position = transform.rotation * (inputManager.LC.Position + gameManager.Parameter.HandPosition) + transform.position;
+        lightController.transform.localRotation = inputManager.LC.Rotation;
         //テスト処理
     }
     void CameraMove()

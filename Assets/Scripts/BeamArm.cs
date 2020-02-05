@@ -5,8 +5,6 @@ using UnityEngine;
 public class BeamArm : MonoBehaviour
 {
     [SerializeField] private Player player = null;
-    //[SerializeField] private float distance = 10.5f;
-    [SerializeField] private GameObject parentObject = null;
     [SerializeField] private ParticleSystem childrenParticle = null;
     private bool raycastFlag = false;
 
@@ -49,7 +47,7 @@ public class BeamArm : MonoBehaviour
     /// </summary>
     void BeamFiring()
     {
-        ray = new Ray(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward);
+        ray = new Ray(transform.position, transform.rotation * Vector3.forward);
         if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
         {
             if (hit.collider.tag == "Gimmick")
@@ -57,8 +55,7 @@ public class BeamArm : MonoBehaviour
                 SuperGimmicks sg = hit.collider.GetComponent<SuperGimmicks>();
                 sg.Activate(player.GM);
             }
-            //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
-        Debug.DrawRay(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward * float.MaxValue, Color.red);
+        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * float.MaxValue, Color.red);
     }
 }

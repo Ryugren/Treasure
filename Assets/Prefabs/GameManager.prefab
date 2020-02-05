@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f8d7591816afc4fb3c3207f2c98040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testControl: 1
+  testControl: 0
   mainCamera: {fileID: 0}
 --- !u!114 &9007507259418171425
 MonoBehaviour:
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter:
-    moveSpeed: 7.5
+    moveSpeed: 40
     turnTime:
       fadeOutStop: 0.05
       fadeOut: 0.05
@@ -78,8 +78,8 @@ MonoBehaviour:
     maxBlindfoldTime: 5
     changeBlindfoldTime: 4
     maxAlphaBlindfold: 0.8
-    playerPosition: {x: 0, y: -5, z: 1}
-    handPosition: {x: 0, y: 0, z: 1}
+    playerPosition: {x: 0, y: -53, z: 1}
+    handPosition: {x: 0, y: 0.5, z: 1}
     player: {fileID: 0}
 --- !u!114 &9007507259418171431
 MonoBehaviour:
