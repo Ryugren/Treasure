@@ -22,7 +22,7 @@ public class BeamArm : MonoBehaviour
 
     void Update()
     {
-        if (!gameManager.Parameter.StartGameFlag || gameManager.Parameter.EndGameFlag) return;
+        if (!player.GM.Parameter.StartGameFlag || player.GM.Parameter.EndGameFlag) return;
         //起動
         if (player.Input.RC.IndexTrigger.Axis > 0.5f && player.GM.Parameter.BeamFlag == true)
         {

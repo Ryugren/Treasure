@@ -43,7 +43,7 @@ public class LightArm : MonoBehaviour
     /// </summary>
     void LightFiring()
     {
-        if (!gameManager.Parameter.StartGameFlag || gameManager.Parameter.EndGameFlag) return;
+        if (!player.GM.Parameter.StartGameFlag || player.GM.Parameter.EndGameFlag) return;
         ray = new Ray(parentObject.transform.position, parentObject.transform.rotation * Vector3.forward);
         if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
         {
