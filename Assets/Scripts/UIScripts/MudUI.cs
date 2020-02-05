@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class MudUI : MonoBehaviour
 {
     [SerializeField]
-    private GameManager gameManager = null;
-    private GameManager.ParameterBase pb { get { return gameManager.Parameter; } }
+    private Player player = null;
+    private GameManager.ParameterBase pb { get { return player.GM.Parameter; } }
     private Image mySelfImage = null;
     private float timeCount = 0f;
     // Start is called before the first frame update
@@ -20,11 +20,11 @@ public class MudUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.Parameter.IsBlindfolded)
+        if (player.GM.Parameter.IsBlindfolded)
         {
             timeCount = pb.MaxBlindfoldTime;
             mySelfImage.color = new Color(1, 1, 1, pb.MaxAlphaBlindfold);
-            gameManager.Parameter.IsBlindfolded = false;
+            player.GM.Parameter.IsBlindfolded = false;
         }
         else if(timeCount > 0)
         {

@@ -13,14 +13,14 @@ public class BeamGaugeUI : MonoBehaviour
 {
 
     [SerializeField]
-    private GameManager GM = null;
+    private Player player = null;
     //public float amountcount;
     public Image BeamUiobj;
     //public bool triger;
 
     void Update()
     {
-        BeamUiobj.fillAmount = GM.Parameter.BeamEnergy;
+        BeamUiobj.fillAmount = player.GM.Parameter.BeamEnergy;
         /*
         amountcount = BeamUiobj.fillAmount;
         if (triger) { BeamUiobj.fillAmount -= 1.0f / GM.Parameter.MaxBeamLimitTime * Time.deltaTime; }

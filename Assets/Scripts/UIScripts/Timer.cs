@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    private GameManager GM = null;
+    private Player player = null;
    
     public Text countText;
     //private int minutes;
@@ -20,6 +20,6 @@ public class Timer : MonoBehaviour
     {
         //CT -= Time.deltaTime;
        // minutes = (int)(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime);
-        countText.text = ((int)(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime)).ToString();
+        countText.text = ((int)(player.GM.Parameter.MaxPlayTime - player.GM.Parameter.CurrentPlayTime)).ToString();
     }
 }

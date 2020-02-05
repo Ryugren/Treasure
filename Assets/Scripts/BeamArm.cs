@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BeamArm : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager = null;
-    [SerializeField] private InputManager inputManager = null;
+    [SerializeField] private Player player = null;
     //[SerializeField] private float distance = 10.5f;
     [SerializeField] private GameObject parentObject = null;
     [SerializeField] private ParticleSystem childrenParticle = null;
@@ -27,9 +26,9 @@ public class BeamArm : MonoBehaviour
     void Update()
     {
         //起動
-        if (inputManager.RC.IndexTrigger.Axis > 0.5f && gameManager.Parameter.BeamFlag == true)
+        if (player.Input.RC.IndexTrigger.Axis > 0.5f && player.GM.Parameter.BeamFlag == true)
         {
-            gameManager.UseEnergy();
+            player.GM.UseEnergy();
 
             childrenParticle.Play(true);
             raycastFlag = true;
@@ -58,7 +57,7 @@ public class BeamArm : MonoBehaviour
             if (hit.collider.tag == "Gimmick")
             {
                 SuperGimmicks sg = hit.collider.GetComponent<SuperGimmicks>();
-                sg.Activate(gameManager);
+                sg.Activate(player.GM);
             }
             //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
         }

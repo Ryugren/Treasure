@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LightArm : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager = null;
-    [SerializeField] private InputManager inputManager = null;
+    [SerializeField] private Player player = null;
     [SerializeField] private Light lightComponent = null;
     private bool releaseFlag = true;
 
@@ -22,7 +21,7 @@ public class LightArm : MonoBehaviour
 
     void Update()
     {
-        if (inputManager.LC.IndexTrigger.Axis > 0.5f)
+        if (player.Input.LC.IndexTrigger.Axis > 0.5f)
         {
             if (releaseFlag)
             {
@@ -30,7 +29,7 @@ public class LightArm : MonoBehaviour
                 releaseFlag = false;
             }
         }
-        else if (inputManager.LC.IndexTrigger.GetUp)
+        else if (player.Input.LC.IndexTrigger.GetUp)
         {
             releaseFlag = true;
         }
@@ -50,7 +49,7 @@ public class LightArm : MonoBehaviour
             if (hit.collider.tag == "Key")
             {
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
-                sg.Activate(gameManager);
+                sg.Activate(player.GM);
             }
             //hit.collider.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
