@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2308654545983207814
+--- !u!1 &5194315829839836881
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2308654545983207816}
-  - component: {fileID: 2308654545983207817}
+  - component: {fileID: 3163888538250072368}
+  - component: {fileID: 2915010225194755515}
   m_Layer: 0
-  m_Name: 'Hollow Audio '
+  m_Name: Robo_damage Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2308654545983207816
+--- !u!4 &3163888538250072368
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2308654545983207814}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 5194315829839836881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.5522785, y: -2.6349092, z: 9.764606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2308654545983207817
+--- !u!82 &2915010225194755515
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2308654545983207814}
+  m_GameObject: {fileID: 5194315829839836881}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 28eab88c71533cf4cbb76be88fffc3c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1ebbeffa13b05714a8e75d8b90fdcec4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
