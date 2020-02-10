@@ -11,12 +11,6 @@ public class TextureNoise : MonoBehaviour
     {
         AlphaChanged(0);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void AlphaChanged(float volume)
     {
         if (volume < 0) volume = 0;

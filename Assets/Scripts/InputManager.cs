@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
     private bool testControl = false;
 
     [SerializeField]
-    Camera mainCamera = null;
+    private Camera mainCamera = null;
 
     // Update is called once per frame
     void Update()
@@ -70,21 +70,32 @@ public class InputManager : MonoBehaviour
         Vector3 screenToWorldPointPosition = mainCamera.ScreenToWorldPoint(cpos);
         //回転量
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel") * 100;
+        //左ハンドトリガー ： Q
+        LC.HandTrigger.Get = Input.GetKey(KeyCode.Q);
+        LC.HandTrigger.GetDown = Input.GetKey(KeyCode.Q);
+        LC.HandTrigger.GetUp = Input.GetKey(KeyCode.Q);
+        if (Input.GetKey(KeyCode.Q))
+        {
+            LC.HandTrigger.Axis = 1;
+        }
+        else
+        {
+            LC.HandTrigger.Axis = 0;
+        }
+        //右ハンドトリガー ：  E
+        RC.HandTrigger.Get = Input.GetKey(KeyCode.E);
+        RC.HandTrigger.GetDown = Input.GetKey(KeyCode.E);
+        RC.HandTrigger.GetUp = Input.GetKey(KeyCode.E);
+        if (Input.GetKey(KeyCode.E))
+        {
+            RC.HandTrigger.Axis = 1;
+        }
+        else
+        {
+            RC.HandTrigger.Axis = 0;
+        }
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            //左ハンドトリガー ： 右クリック
-            LC.HandTrigger.Get = Input.GetMouseButton(1);
-            LC.HandTrigger.GetDown = Input.GetMouseButtonDown(1);
-            LC.HandTrigger.GetUp = Input.GetMouseButtonUp(1);
-            if (Input.GetMouseButton(1))
-            {
-                LC.HandTrigger.Axis = 1;
-            }
-            else
-            {
-                LC.HandTrigger.Axis = 0;
-            }
-
             //左インデックストリガー ： 左クリック
             LC.IndexTrigger.Get = Input.GetMouseButton(0);
             LC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
@@ -106,18 +117,6 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            //右ハンドトリガー ：  Shift + 右クリック
-            RC.HandTrigger.Get = Input.GetMouseButton(1);
-            RC.HandTrigger.GetDown = Input.GetMouseButtonDown(1);
-            RC.HandTrigger.GetUp = Input.GetMouseButtonUp(1);
-            if (Input.GetMouseButton(1))
-            {
-                RC.HandTrigger.Axis = 1;
-            }
-            else
-            {
-                RC.HandTrigger.Axis = 0;
-            }
             //右インデックストリガー ： Shift + 左クリック
             RC.IndexTrigger.Get = Input.GetMouseButton(0);
             RC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
@@ -141,7 +140,7 @@ public class InputManager : MonoBehaviour
         float axisX = Input.GetAxis("Horizontal");
         float axisY = Input.GetAxis("Vertical");
         LC.AxisStick = new Vector2(axisX, axisY);
-        if (Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E))
+        /*if (Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E))
         {
             RC.AxisStick = Vector2.left;
         }
@@ -152,7 +151,7 @@ public class InputManager : MonoBehaviour
         else
         {
             RC.AxisStick = Vector2.zero;
-        }
+        }*/
     }
     private void VRControl()
     {

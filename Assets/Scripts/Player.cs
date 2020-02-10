@@ -41,14 +41,22 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = gameManager.Parameter.PlayerPosition;
+        if(gameManager == null)
+        {
+            GameObject gmobj = GameObject.Find("GameManger");
+            gameManager = gmobj.GetComponent<GameManager>();
+            inputManager = gmobj.GetComponent<InputManager>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.Parameter.StartGameFlag) return;
-        if (gameManager.Parameter.EndGameFlag) return;
+        if (!gameManager.Parameter.StartGameFlag || gameManager.Parameter.EndGameFlag)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         if (damageTimeCount > 0)
         {
             damageTimeCount -= Time.deltaTime;
