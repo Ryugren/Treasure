@@ -50,7 +50,7 @@ public class BeamArm : MonoBehaviour
         ray = new Ray(transform.position, transform.rotation * Vector3.forward);
         if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
         {
-            if (hit.collider.tag == "Gimmick")
+            if (hit.collider.tag.Contains("Gimmick"))
             {
                 SuperGimmicks sg = hit.collider.GetComponent<SuperGimmicks>();
                 sg.Activate(player.GM);

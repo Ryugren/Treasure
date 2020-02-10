@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             case 1: //フェイドアウト待ち
                 if (turnFlagCount > 0)
                 {
-                    turnFlagCount = turnFlagCount - Time.deltaTime;
+                    turnFlagCount -= Time.deltaTime;
                 }
                 else
                 {
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
             case 2: //フェイドアウト
                 if (turnFlagCount > 0)
                 {
-                    turnFlagCount = turnFlagCount - Time.deltaTime;
+                    turnFlagCount -= Time.deltaTime;
                     foreach (TextureNoise it in tns) 
                     {
                         it.AlphaChanged(1 - (turnFlagCount / turnFadeOutTime));
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             case 3: //フェイドイン待ち
                 if (turnFlagCount > 0)
                 {
-                    turnFlagCount = turnFlagCount - Time.deltaTime;
+                    turnFlagCount -= Time.deltaTime;
                 }
                 else
                 {
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
             case 4: //フェイドイン
                 if (turnFlagCount > 0)
                 {
-                    turnFlagCount = turnFlagCount - Time.deltaTime;
+                    turnFlagCount -= Time.deltaTime;
                     foreach (TextureNoise it in tns)
                     {
                         it.AlphaChanged(turnFlagCount / turnFadeInTime);
@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
             case 5: //回転終了待ち
                 if (turnFlagCount > 0)
                 {
-                    turnFlagCount = turnFlagCount - Time.deltaTime;
+                    turnFlagCount -= Time.deltaTime;
                 }
                 else
                 {

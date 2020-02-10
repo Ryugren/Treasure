@@ -27,9 +27,6 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     Camera mainCamera = null;
-    void Awake()
-    {
-    }
 
     // Update is called once per frame
     void Update()
