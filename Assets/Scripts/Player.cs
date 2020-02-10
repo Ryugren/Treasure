@@ -39,15 +39,6 @@ public class Player : MonoBehaviour
     private float turnEndTime { get { return gameManager.Parameter.TurnTime.End; } }
     private float totalTurnTime { get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop + turnEndTime; } }
     // Start is called before the first frame update
-    void Start()
-    {
-        if(gameManager == null)
-        {
-            GameObject gmobj = GameObject.Find("GameManger");
-            gameManager = gmobj.GetComponent<GameManager>();
-            inputManager = gmobj.GetComponent<InputManager>();
-        }
-    }
 
     // Update is called once per frame
     void Update()
