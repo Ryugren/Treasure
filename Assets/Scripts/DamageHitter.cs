@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Foot : MonoBehaviour
+public class DamageHitter : MonoBehaviour
 {
-    [SerializeField] private Player player = null;
+    [SerializeField]
+    private Player player = null;
     public Player Player { get { return player; } }
 }

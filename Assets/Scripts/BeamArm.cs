@@ -12,6 +12,8 @@ public class BeamArm : MonoBehaviour
     private RaycastHit hit;
     private int mask;
 
+    [SerializeField]
+    private AudioSource beamSE = null;
     void Awake()
     {
         mask = LayerMask.GetMask("Gimmick");
@@ -29,6 +31,7 @@ public class BeamArm : MonoBehaviour
             childrenParticle.Play(true);
             raycastFlag = true;
             BeamFiring();
+            beamSE.Play();
         }
         //起動しない
         else

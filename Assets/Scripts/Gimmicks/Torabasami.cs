@@ -13,11 +13,11 @@ public class Torabasami : SuperGimmicks
     private void OnTriggerEnter(Collider other)
     {
         if (IsBreaked) return;
-        if (other.name == "Foot")
+        if (other.gameObject.tag.Equals("Player"))
         {
-            Foot foot = other.GetComponent<Foot>();
-            foot.Player.Damage(5);
-            foot.Player.Slow();
+            DamageHitter hitter = other.GetComponent<DamageHitter>();
+            hitter.Player.Damage(5);
+            hitter.Player.Slow();
             animator.SetBool("Hit", true);
             IsBreaked = true;
         }

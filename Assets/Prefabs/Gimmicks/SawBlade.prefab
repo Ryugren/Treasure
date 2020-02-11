@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6259282882362788523}
   - component: {fileID: 6198236535967782017}
   - component: {fileID: 6205874669869196129}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: SawBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ Animation:
   - {fileID: 7400000, guid: 510be8adcc23f9a4d97c31bae6e13d39, type: 3}
   - {fileID: 7400002, guid: 510be8adcc23f9a4d97c31bae6e13d39, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &6205874669869196129
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6331146710256018263}
   - component: {fileID: 6299503228529389915}
   - component: {fileID: 3951262826963943236}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: DTP_FloorTraps_SawbladeSlit_Sawblade_Mesh
   m_TagString: Gimmick
   m_Icon: {fileID: 0}
@@ -191,6 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4498107f37f0fb44281bb54961d7ba77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveAnim: {fileID: 6259282882362788523}
+  mr: {fileID: 6331146710256018263}
 --- !u!1 &6308430679048630975
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +205,7 @@ GameObject:
   - component: {fileID: 6340837051098928149}
   - component: {fileID: 6331274649330920897}
   - component: {fileID: 6300400850531821669}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: DTP_FloorTraps_SawbladeSlit_Slit_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

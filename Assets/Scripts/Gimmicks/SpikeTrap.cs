@@ -13,9 +13,9 @@ public class SpikeTrap : SuperGimmicks
     {
         {
             if (IsBreaked) return;
-            if (collision.gameObject.name == "Foot")
+            if (collision.gameObject.tag.Equals("Player"))
             {
-                collision.gameObject.GetComponent<Foot>().Player.Damage(5);
+                collision.gameObject.GetComponent<DamageHitter>().Player.Damage(5);
             }
         }
     }

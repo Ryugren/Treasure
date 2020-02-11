@@ -10,7 +10,8 @@ public class LightArm : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
     private int mask;
-
+    [SerializeField]
+    private AudioSource lightSE = null;
     void Awake()
     {
         mask = LayerMask.GetMask("Key");
@@ -24,6 +25,7 @@ public class LightArm : MonoBehaviour
             {
                 lightComponent.enabled = !lightComponent.enabled;
                 releaseFlag = false;
+                lightSE.Play();
             }
         }
         else if (player.Input.LC.IndexTrigger.GetUp)
@@ -42,7 +44,7 @@ public class LightArm : MonoBehaviour
     {
         if (!player.GM.Parameter.StartGameFlag || player.GM.Parameter.EndGameFlag) return;
         ray = new Ray(transform.position, transform.rotation * Vector3.forward);
-        if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
+        if (Physics.Raycast(ray, out hit, lightComponent.range, mask))
         {
             if (hit.collider.tag == "Key")
             {

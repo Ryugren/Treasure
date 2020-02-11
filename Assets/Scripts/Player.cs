@@ -39,7 +39,10 @@ public class Player : MonoBehaviour
     private float turnEndTime { get { return gameManager.Parameter.TurnTime.End; } }
     private float totalTurnTime { get { return turnFadeOutTime + turnFadeOutTimeStop + turnFadeInTime + turnFadeInTimeStop + turnEndTime; } }
     // Start is called before the first frame update
-
+    [SerializeField]
+    private AudioSource damageSE = null;
+    [SerializeField]
+    private AudioSource shortNoiseSE = null;
     // Update is called once per frame
     void Update()
     {
@@ -76,14 +79,16 @@ public class Player : MonoBehaviour
                     turnFlagCount = turnFadeOutTimeStop;
                     angleVisionNumber = (angleVisionNumber + angleVisionCutNumber - 1) % angleVisionCutNumber;
                     turnTimeCount = 0;
+                    shortNoiseSE.Play();
                 }
-                if (inputManager.RC.HandTrigger.Axis > 0.5f)
+                else if (inputManager.RC.HandTrigger.Axis > 0.5f)
                 {
                     turnDirection = 1;
                     fadeState = 1;
                     turnFlagCount = turnFadeOutTimeStop;
                     angleVisionNumber = (angleVisionNumber + 1) % angleVisionCutNumber;
                     turnTimeCount = 0;
+                    shortNoiseSE.Play();
                 }
                 break;
             case 1: //フェイドアウト待ち
@@ -171,6 +176,7 @@ public class Player : MonoBehaviour
         if (damageTimeCount > 0) return;
         gameManager.Damage(value);
         damageTimeCount = 1f;
+        damageSE.Play();
     }
     public void Slow()
     {

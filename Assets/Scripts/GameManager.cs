@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     /// ゲームのパラメーター
     /// </summary>
     public ParameterBase Parameter { get { return parameter; } }
+    [SerializeField]
+    private AudioSource caveSE = null;
+    [SerializeField]
+    private float caveSETime = 30;
+    private int caveSEPlayCount = 1;
     private void Awake()
     {
         Application.targetFrameRate = 72;
@@ -88,6 +93,11 @@ public class GameManager : MonoBehaviour
         {
             parameter.EndGameFlag = true;
             parameter.CurrentPlayTime = parameter.MaxPlayTime;
+        }
+        if (!parameter.EndGameFlag && parameter.CurrentPlayTime > caveSETime * caveSEPlayCount)
+        {
+            caveSE.Play();
+            ++caveSEPlayCount;
         }
     }
     [System.Serializable]
