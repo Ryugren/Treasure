@@ -44,11 +44,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioSource shortNoiseSE = null;
     // Update is called once per frame
+    private void Awake()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
     void Update()
     {
-        if (!gameManager.Parameter.StartGameFlag || gameManager.Parameter.EndGameFlag)
+        if (rb.constraints == RigidbodyConstraints.FreezeAll && gameManager.Parameter.StartGameFlag)
         {
-            rb.velocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
             return;
         }
         if (damageTimeCount > 0)

@@ -94,21 +94,32 @@ public class InputManager : MonoBehaviour
         {
             RC.HandTrigger.Axis = 0;
         }
+        //左インデックストリガー ： 左クリック
+        LC.IndexTrigger.Get = Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift);
+        LC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift);
+        LC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0) && !Input.GetKey(KeyCode.LeftShift);
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
+        {
+            LC.IndexTrigger.Axis = 1;
+        }
+        else
+        {
+            LC.IndexTrigger.Axis = 0;
+        }
+        //右インデックストリガー ： Shift + 左クリック
+        RC.IndexTrigger.Get = Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift);
+        RC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift);
+        RC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0) && Input.GetKey(KeyCode.LeftShift);
+        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift))
+        {
+            RC.IndexTrigger.Axis = 1;
+        }
+        else
+        {
+            RC.IndexTrigger.Axis = 0;
+        }
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            //左インデックストリガー ： 左クリック
-            LC.IndexTrigger.Get = Input.GetMouseButton(0);
-            LC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
-            LC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0);
-            if (Input.GetMouseButton(0))
-            {
-                LC.IndexTrigger.Axis = 1;
-            }
-            else
-            {
-                LC.IndexTrigger.Axis = 0;
-            }
-
             //コントローラー位置：マウス位置
             LC.Position = screenToWorldPointPosition;
             //コントローラー角度：ホイール
@@ -117,19 +128,6 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            //右インデックストリガー ： Shift + 左クリック
-            RC.IndexTrigger.Get = Input.GetMouseButton(0);
-            RC.IndexTrigger.GetDown = Input.GetMouseButtonDown(0);
-            RC.IndexTrigger.GetUp = Input.GetMouseButtonUp(0);
-            if (Input.GetMouseButton(0))
-            {
-                RC.IndexTrigger.Axis = 1;
-            }
-            else
-            {
-                RC.IndexTrigger.Axis = 0;
-            }
-
             //コントローラー位置：マウス位置
             RC.Position = screenToWorldPointPosition;
             //コントローラー角度：ホイール
