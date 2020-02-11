@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7793043860911536019}
   m_Layer: 0
   m_Name: 'Light_Switch Audio '
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -68,7 +68,7 @@ MonoBehaviour:
       fadeInStop: 0.3
       fadeIn: 0.2
       end: 0.2
-    maxPlayTime: 10
+    maxPlayTime: 180
     maxLife: 100
     maxBeamLimitTime: 3
     maxBeamEnergyRechargeTime: 5
@@ -172,6 +172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331078814632458218, guid: 85cbe9d28320bab45a58e5197d4c1024,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85cbe9d28320bab45a58e5197d4c1024, type: 3}
