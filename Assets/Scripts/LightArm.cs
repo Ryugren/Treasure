@@ -15,6 +15,7 @@ public class LightArm : MonoBehaviour
     void Awake()
     {
         mask = LayerMask.GetMask("Key");
+        lightComponent.range = player.GM.Parameter.LightRange;
     }
 
     void Update()
@@ -44,14 +45,23 @@ public class LightArm : MonoBehaviour
     {
         if (!player.GM.Parameter.StartGameFlag || player.GM.Parameter.EndGameFlag) return;
         ray = new Ray(transform.position, transform.rotation * Vector3.forward);
-        if (Physics.Raycast(ray, out hit, lightComponent.range, mask))
+        if (Physics.Raycast(ray, out hit, lightComponent.range * player.GM.Parameter.LightHitRange, mask))
         {
             if (hit.collider.tag == "Key")
             {
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
-                sg.Activate(player.GM);
+                sg.Activate(player.GM, 0);
             }
         }
-        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * float.MaxValue, Color.red);
+        ray = new Ray(transform.position, transform.rotation * Vector3.forward);
+        if (Physics.Raycast(ray, out hit, lightComponent.range * player.GM.Parameter.LightHit2Range, mask))
+        {
+            if (hit.collider.tag == "Key")
+            {
+                SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
+                sg.Activate(player.GM, 1);
+            }
+        }
+        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * lightComponent.range * player.GM.Parameter.LightHit2Range, Color.red);
     }
 }

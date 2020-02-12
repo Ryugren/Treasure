@@ -78,6 +78,9 @@ MonoBehaviour:
     maxBlindfoldTime: 5
     changeBlindfoldTime: 4
     maxAlphaBlindfold: 0.8
+    lightRange: 100
+    lightHitRange: 0.1
+    lightHit2Range: 0.3
     playerPosition: {x: 0, y: -53, z: 1}
     handPosition: {x: 0, y: 0.5, z: 1}
     player: {fileID: 0}

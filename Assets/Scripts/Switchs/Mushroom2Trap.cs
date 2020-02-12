@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudTrap : SuperSwitchTarget
+public class Mushroom2Trap : SuperSwitchTarget
 {
     public override void Activate(GameManager gm)
     {

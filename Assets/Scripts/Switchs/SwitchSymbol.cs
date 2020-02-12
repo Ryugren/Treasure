@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class SwitchSymbol : MonoBehaviour
 {
-    [SerializeField]
-    private SuperSwitchTarget ssTarget = null;
-    public bool IsBreaked { get; private set; } = false;
-    // Start is called before the first frame update
-    public void Activate(GameManager gm)
+    [System.Serializable]
+    public class Parameter
     {
-        if (IsBreaked) return;
-        ssTarget.Activate(gm);
-        IsBreaked = true;
+        [SerializeField]
+        private SuperSwitchTarget ssTarget = null;
+        public SuperSwitchTarget SSTarget { get{ return ssTarget; } }
+        public bool IsBreaked { get; set; } = false;
+    }
+    [SerializeField]
+    Parameter[] parameters = null;
+    // Start is called before the first frame update
+    public void Activate(GameManager gm, int number)
+    {
+        if (number >= parameters.Length) return;
+        if (parameters[number].IsBreaked) return;
+        parameters[number].SSTarget.Activate(gm);
+        parameters[number].IsBreaked = true;
     }
 }

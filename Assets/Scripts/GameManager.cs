@@ -238,6 +238,27 @@ public class GameManager : MonoBehaviour
         /// </summary>
         public float CurrentPlayTime { get; set; }
 
+        [SerializeField, Tooltip("ライトの距離")]
+        private float lightRange = 100f;
+        /// <summary>
+        /// ライト距離
+        /// </summary>
+        public float LightRange { get { return lightRange; } }
+
+        [SerializeField, Range(0f, 1f), Tooltip("ライトの当たる距離1")]
+        private float lightHitRange = 0.1f;
+        /// <summary>
+        /// ライト反応距離1
+        /// </summary>
+        public float LightHitRange { get { return lightHitRange; } }
+
+        [SerializeField, Range(0f, 1f), Tooltip("ライト反応距離2（胞子が出る距離）")]
+        private float lightHit2Range = 0.3f;
+        /// <summary>
+        /// ライト反応距離2（胞子が出る距離）
+        /// </summary>
+        public float LightHit2Range { get { return lightHit2Range; } }
+
         [SerializeField]
         private Vector3 playerPosition = Vector3.zero;
         public Vector3 PlayerPosition { get { return playerPosition; } }

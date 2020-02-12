@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7432755304332820585}
   m_Layer: 10
   m_Name: capricorn_shape_geo
-  m_TagString: Key
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 630757093118390278}
   m_Layer: 10
   m_Name: prism_base_geo3
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,4 +214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabbd9c7a73a3254d8356b5fd18c531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ssTarget: {fileID: 0}
+  parameters: []
