@@ -59,7 +59,7 @@ public class CreateManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(data)) return null;
         //反転
-        bool reverseFlag = string.Equals('^', data[0]);
+        bool reverseFlag = Equals('^', data[0]);
         //オブジェクトの種類
         int objectNumber = reverseFlag ? 
             int.Parse(data.Substring(1, 1)) :

@@ -51,7 +51,7 @@ public class BeamArm : MonoBehaviour
     void BeamFiring()
     {
         ray = new Ray(transform.position, transform.rotation * Vector3.forward);
-        if (Physics.Raycast(ray, out hit, float.MaxValue, mask))
+        if (Physics.Raycast(ray, out hit, player.GM.Parameter.LightRange, mask))
         {
             if (hit.collider.tag.Contains("Gimmick"))
             {
@@ -59,6 +59,6 @@ public class BeamArm : MonoBehaviour
                 sg.Activate(player.GM);
             }
         }
-        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * float.MaxValue, Color.red);
+        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * player.GM.Parameter.LightRange, Color.red);
     }
 }

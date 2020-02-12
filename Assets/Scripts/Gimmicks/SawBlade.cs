@@ -26,7 +26,7 @@ public class SawBlade : SuperGimmicks
     private void OnTriggerEnter(Collider other)
     {
         if (IsBreaked) return;
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Contains("Player"))
         {
             other.GetComponent<DamageHitter>().Player.Damage(5);
             IsBreaked = true;

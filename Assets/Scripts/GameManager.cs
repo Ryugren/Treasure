@@ -250,14 +250,14 @@ public class GameManager : MonoBehaviour
         /// <summary>
         /// ライト反応距離1
         /// </summary>
-        public float LightHitRange { get { return lightHitRange; } }
+        public float LightHitRange { get { return lightRange * lightHitRange; } }
 
         [SerializeField, Range(0f, 1f), Tooltip("ライト反応距離2（胞子が出る距離）")]
         private float lightHit2Range = 0.3f;
         /// <summary>
         /// ライト反応距離2（胞子が出る距離）
         /// </summary>
-        public float LightHit2Range { get { return lightHit2Range; } }
+        public float LightHit2Range { get { return lightRange * lightHit2Range; } }
 
         [SerializeField]
         private Vector3 playerPosition = Vector3.zero;

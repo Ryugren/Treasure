@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
         foreach (GameObject obj in FindObjectsOfType(typeof(GameObject)))
         {
             // シーン上に存在するオブジェクトならば処理.
-            if (obj.activeInHierarchy && obj.tag.Equals("Sound"))
+            if (obj.activeInHierarchy && obj.tag.Contains("Sound"))
             {
                 gameObjects.Add(obj);
             }

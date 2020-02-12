@@ -7,7 +7,6 @@ public class LightArm : MonoBehaviour
     [SerializeField] private Player player = null;
     [SerializeField] private Light lightComponent = null;
     private bool releaseFlag = true;
-    private Ray ray;
     private RaycastHit hit;
     private int mask;
     [SerializeField]
@@ -44,24 +43,27 @@ public class LightArm : MonoBehaviour
     void LightFiring()
     {
         if (!player.GM.Parameter.StartGameFlag || player.GM.Parameter.EndGameFlag) return;
-        ray = new Ray(transform.position, transform.rotation * Vector3.forward);
-        if (Physics.Raycast(ray, out hit, lightComponent.range * player.GM.Parameter.LightHitRange, mask))
+        if (Physics.SphereCast(transform.position, 1, transform.forward, out hit, player.GM.Parameter.LightHitRange, mask))
         {
-            if (hit.collider.tag == "Key")
+            if (hit.collider.tag.Contains("Key"))
             {
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
                 sg.Activate(player.GM, 0);
             }
         }
-        ray = new Ray(transform.position, transform.rotation * Vector3.forward);
-        if (Physics.Raycast(ray, out hit, lightComponent.range * player.GM.Parameter.LightHit2Range, mask))
+        if (Physics.SphereCast(transform.position, 1, transform.forward, out hit, player.GM.Parameter.LightHit2Range, mask))
         {
-            if (hit.collider.tag == "Key")
+            if (hit.collider.tag.Contains("Key"))
             {
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
                 sg.Activate(player.GM, 1);
             }
         }
-        Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * lightComponent.range * player.GM.Parameter.LightHit2Range, Color.red);
+    }
+    void OnDrawGizmos()
+    {
+        //　Capsuleのレイを疑似的に視覚化
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(hit.point, 1);
     }
 }
