@@ -5,6 +5,6 @@ public class Door : SuperSwitchTarget
     public override void Activate(GameManager gm)
     {
         base.Activate(gm);
-        animator.Play("DoorOpen");
+        animator.SetBool("Flag",true);
     }
 }
