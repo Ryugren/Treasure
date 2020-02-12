@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        angleVisionNumber = angleVisionCutNumber / 2;
+        transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
     }
     void Update()
     {

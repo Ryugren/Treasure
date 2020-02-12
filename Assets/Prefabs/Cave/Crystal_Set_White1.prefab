@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3313586}
   - component: {fileID: 2342790}
   - component: {fileID: -581006847779637506}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_White1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

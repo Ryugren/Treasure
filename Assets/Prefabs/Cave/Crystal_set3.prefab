@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 472844}
   - component: {fileID: 3359570}
   - component: {fileID: 2390006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_White6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449060}
   - component: {fileID: -7981646566643692373}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_set3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 429654}
   - component: {fileID: 3310384}
   - component: {fileID: 2351882}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_White4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 434970}
   - component: {fileID: 3339026}
   - component: {fileID: 2399358}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_set1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 408306}
   - component: {fileID: 3317924}
   - component: {fileID: 2394188}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_White5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 497270}
   - component: {fileID: 19860688}
   - component: {fileID: 19967724}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

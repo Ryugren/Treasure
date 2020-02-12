@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3391162}
   - component: {fileID: 2396008}
   - component: {fileID: -4373423025534834012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cave_rocks6
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 404718}
   - component: {fileID: 3358688}
   - component: {fileID: 2326410}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424814}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mushroom_All3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 495988}
   - component: {fileID: 3320840}
   - component: {fileID: 2323652}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_Red3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 459684}
   - component: {fileID: 19837124}
   - component: {fileID: 19913748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4785,7 +4785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409390}
   - component: {fileID: -34629549098028813}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_set2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4836,7 +4836,7 @@ GameObject:
   - component: {fileID: 479346}
   - component: {fileID: 3327032}
   - component: {fileID: 2367536}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_set1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 436878}
   - component: {fileID: 3329812}
   - component: {fileID: 2363412}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_Red3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,7 +4990,7 @@ GameObject:
   - component: {fileID: 406870}
   - component: {fileID: 3359114}
   - component: {fileID: 2390126}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal_Set_Red5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

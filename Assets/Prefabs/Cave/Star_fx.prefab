@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19822072}
   - component: {fileID: 19973476}
   - component: {fileID: 7494471697994964773}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Star_fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
