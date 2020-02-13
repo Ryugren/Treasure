@@ -214,4 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabbd9c7a73a3254d8356b5fd18c531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters: []
+  parameters:
+  - ssTarget: {fileID: 0}

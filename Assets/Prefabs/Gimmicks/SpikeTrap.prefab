@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 458351591398853577}
-  - component: {fileID: 4808060754144582947}
-  m_Layer: 11
+  - component: {fileID: 2909742428719601235}
+  m_Layer: 9
   m_Name: SpikeTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4808060754144582947
+--- !u!114 &2909742428719601235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1601942434753973521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694808634b2d78a4f878d8c6b6ef33bd, type: 3}
+  m_Script: {fileID: 11500000, guid: c8c6539fccdd67747882ccaf88d0f5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 8724184200333485880}
   anim: {fileID: 8860921775378967298}
 --- !u!1 &8860921775378967299
 GameObject:
@@ -55,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872099}
   - component: {fileID: 8860921775378967298}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Spike_Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +117,7 @@ GameObject:
   - component: {fileID: 8860921775378872105}
   - component: {fileID: 8860921775376004891}
   - component: {fileID: 8860921775376971227}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bottom_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872109}
   - component: {fileID: 8860921775365301783}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Mid_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872103}
   - component: {fileID: 8860921775365301781}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bottom_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872111}
   - component: {fileID: 8860921775365301785}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Spike_Back_Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872117}
   - component: {fileID: 8860921775365301791}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: top_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872115}
   - component: {fileID: 8860921775365301789}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Top_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +609,7 @@ GameObject:
   - component: {fileID: 8860921775378872107}
   - component: {fileID: 8860921775376004893}
   - component: {fileID: 8860921775376971229}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bottom_Spike_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860921775378872113}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Spike_Top_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860921775378872101}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860921775378872119}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860921775378872121}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bone_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8860921775378872123}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Bone_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872125}
   - component: {fileID: 8860921775372763935}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: spike wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +870,7 @@ BoxCollider:
   m_GameObject: {fileID: 8860921775378967325}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 6.6, y: 6.6, z: 1}
   m_Center: {x: -3.284771, y: 3.7226193, z: 0.4090615}
@@ -886,7 +887,8 @@ GameObject:
   - component: {fileID: 8860921775376971231}
   - component: {fileID: 8860921775372763933}
   - component: {fileID: 8860921775373895807}
-  m_Layer: 11
+  - component: {fileID: 8724184200333485880}
+  m_Layer: 9
   m_Name: default
   m_TagString: Gimmick
   m_Icon: {fileID: 0}
@@ -981,6 +983,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8724184200333485880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860921775378967327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694808634b2d78a4f878d8c6b6ef33bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8860921775378967423
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8860921775378872095}
   - component: {fileID: 8860921775365301787}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Top_Spike_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
