@@ -15,9 +15,29 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float caveSETime = 30;
     private int caveSEPlayCount = 1;
+    [SerializeField]
+    private Search[] searches = null;
+    [SerializeField]
+    private GameObject player = null;
+    [SerializeField]
+    private float distanceChange = 100f;
+    [System.Serializable]
+    public class Search
+    {
+        [SerializeField]
+        private AudioSource se = null;
+        public AudioSource SE{ get { return se; } }
+        [SerializeField]
+        private GameObject target = null;
+        public GameObject Target { get { return target; } }
+    }
     private void Awake()
     {
         Application.targetFrameRate = 72;
+        for (int i = 0; i < searches.Length; ++i)
+        {
+            searches[i].SE.Play();
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -32,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (!parameter.StartGameFlag) return;
         if (parameter.EndGameFlag) return;
         GameOver();
+        Searching();
         CountTimer();
         BeamEnergyRecharge();
         parameter.SlowCountTimer();
@@ -42,6 +63,21 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         parameter.StartGameFlag = true;
+    }
+    public void Searching()
+    {
+        for (int i = 0; i < searches.Length; ++i)
+        {
+            float a = Vector3.Distance(searches[i].Target.transform.position, player.transform.position);
+            if (a < distanceChange)
+            {
+                searches[i].SE.volume = 1 - a / distanceChange;
+            }
+            else
+            {
+                searches[i].SE.volume = 0;
+            }
+        }
     }
     public void Damage(float amount)
     {

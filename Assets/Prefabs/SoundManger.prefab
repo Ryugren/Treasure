@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundParameters:
   - Audio: {fileID: 0}
+    Clip: {fileID: 8300000, guid: bd964f546484a9c4cbfe7460fdb5dfbc, type: 3}
+    Volume: 1
+    Loop: 1
+  - Audio: {fileID: 0}
     Clip: {fileID: 8300000, guid: 57c1d4b50c73ef84088a18c80db87ff4, type: 3}
     Volume: 1
     Loop: 0
@@ -57,9 +61,9 @@ MonoBehaviour:
     Volume: 1
     Loop: 0
   - Audio: {fileID: 0}
-    Clip: {fileID: 8300000, guid: 99f4333f03d90bb419402ea67adf04db, type: 3}
+    Clip: {fileID: 8300000, guid: 038a40a515f45ca47af4e6da9ee2c5e4, type: 3}
     Volume: 1
-    Loop: 0
+    Loop: 1
   - Audio: {fileID: 0}
     Clip: {fileID: 8300000, guid: 1ebbeffa13b05714a8e75d8b90fdcec4, type: 3}
     Volume: 1

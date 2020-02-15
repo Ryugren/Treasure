@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     private AudioSource damageSE = null;
     [SerializeField]
     private AudioSource shortNoiseSE = null;
+    [SerializeField]
+    private DamageFlash df = null;
     // Update is called once per frame
     private void Awake()
     {
@@ -183,6 +185,7 @@ public class Player : MonoBehaviour
         gameManager.Damage(value);
         damageTimeCount = 1f;
         damageSE.Play();
+        df.IsDamaged();
     }
     public void Slow()
     {
