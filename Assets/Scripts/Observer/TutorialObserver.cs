@@ -1,18 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialObserver : BaseObserver
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private AudioSource voice = null;
+    public override void Action()
     {
-        
+        base.Action();
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void CountTimer()
     {
-        
+        base.CountTimer();
+    }
+    public override void GameStart()
+    {
+        if (input.LC.IndexTrigger.GetDown && input.LC.IndexTrigger.Axis > 0.5f)
+        {
+            voice.Play();
+            Parameter.StartGameFlag = true;
+        }
+    }
+    public override void GameOver()
+    {
+    }
+    public override void GameEnd()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 }

@@ -5,32 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private BaseObserver observer = null;
+    [SerializeField]
     private ParameterBase parameter = null;
     /// <summary>
     /// ゲームのパラメーター
     /// </summary>
     public ParameterBase Parameter { get { return parameter; } }
-    [SerializeField]
-    private AudioSource caveSE = null;
-    [SerializeField]
-    private float caveSETime = 30;
-    private int caveSEPlayCount = 1;
-    [SerializeField]
-    private Search[] searches = null;
-    [SerializeField]
-    private GameObject player = null;
-    [SerializeField]
-    private float distanceChange = 100f;
-    [System.Serializable]
-    public class Search
-    {
-        [SerializeField]
-        private AudioSource se = null;
-        public AudioSource SE{ get { return se; } }
-        [SerializeField]
-        private GameObject target = null;
-        public GameObject Target { get { return target; } }
-    }
     private void Awake()
     {
         Application.targetFrameRate = 72;
@@ -45,50 +26,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Parameter.StartGameFlag)
+        {
+            observer.GameStart();
+        }
+        if (Parameter.EndGameFlag)
+        {
+            observer.GameEnd();
+        }
         if (!parameter.StartGameFlag || parameter.EndGameFlag) return;
-        GameOver();
-        Searching();
-        CountTimer();
-        BeamEnergyRecharge();
+        observer.GameOver();
+        observer.CountTimer();
+        observer.Action();
         parameter.SlowCountTimer();
-    }
-    /// <summary>
-    /// ゲームスタート
-    /// </summary>
-    public void GameStart()
-    {
-        parameter.StartGameFlag = true;
-        for (int i = 0; i < searches.Length; ++i)
-        {
-            searches[i].SE.Play();
-        }
-    }
-    public void Searching()
-    {
-        for (int i = 0; i < searches.Length; ++i)
-        {
-            float a = Vector3.Distance(searches[i].Target.transform.position, player.transform.position);
-            if (a < distanceChange)
-            {
-                searches[i].SE.volume = 1 - a / distanceChange;
-            }
-            else
-            {
-                searches[i].SE.volume = 0;
-            }
-        }
     }
     public void Damage(float amount)
     {
         parameter.Life -= amount;
-    }
-    private void GameOver()
-    {
-        if (parameter.Life <= 0)
-        {
-            parameter.EndGameFlag = true;
-            parameter.Life = 0;
-        }
     }
     /// <summary>
     /// ビームエネルギーを使う
@@ -104,39 +58,6 @@ public class GameManager : MonoBehaviour
         {
             parameter.BeamEnergy = 0;
             parameter.IsRecharged = true;
-        }
-    }
-    /// <summary>
-    /// ビームの再装填
-    /// </summary>
-    private void BeamEnergyRecharge()
-    {
-        if (parameter.IsRecharged)
-        {
-            parameter.BeamEnergy += Time.deltaTime / parameter.MaxBeamEnergyRechargeTime;
-            if (parameter.BeamEnergy >= 1f)
-            {
-                parameter.IsRecharged = false;
-                parameter.BeamEnergy = 1f;
-            }
-        }
-    }
-    private void CountTimer()
-    {
-        parameter.CurrentPlayTime += Time.deltaTime;
-        if (parameter.MaxPlayTime - parameter.CurrentPlayTime <= 0)
-        {
-            parameter.EndGameFlag = true;
-            parameter.CurrentPlayTime = parameter.MaxPlayTime;
-            for (int i = 0; i < searches.Length; ++i)
-            {
-                searches[i].SE.Stop();
-            }
-        }
-        if (!parameter.EndGameFlag && parameter.CurrentPlayTime > caveSETime * caveSEPlayCount)
-        {
-            caveSE.Play();
-            ++caveSEPlayCount;
         }
     }
     [System.Serializable]
