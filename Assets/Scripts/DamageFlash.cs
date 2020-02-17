@@ -11,7 +11,6 @@ public class DamageFlash : MonoBehaviour
     [SerializeField, Range(0, 1)] private float damageMinAlpha = 0.1f;
     private float nowTime = 0f;
     [SerializeField] private float maxTime = 1f;
-
     void Awake()
     {
         damageNowAlpha = 0f;

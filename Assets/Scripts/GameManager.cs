@@ -34,10 +34,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 72;
-        for (int i = 0; i < searches.Length; ++i)
-        {
-            searches[i].SE.Play();
-        }
     }
     // Start is called before the first frame update
     void Start()
@@ -49,8 +45,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!parameter.StartGameFlag) return;
-        if (parameter.EndGameFlag) return;
+        if (!parameter.StartGameFlag || parameter.EndGameFlag) return;
         GameOver();
         Searching();
         CountTimer();
@@ -63,6 +58,10 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         parameter.StartGameFlag = true;
+        for (int i = 0; i < searches.Length; ++i)
+        {
+            searches[i].SE.Play();
+        }
     }
     public void Searching()
     {
@@ -129,6 +128,10 @@ public class GameManager : MonoBehaviour
         {
             parameter.EndGameFlag = true;
             parameter.CurrentPlayTime = parameter.MaxPlayTime;
+            for (int i = 0; i < searches.Length; ++i)
+            {
+                searches[i].SE.Stop();
+            }
         }
         if (!parameter.EndGameFlag && parameter.CurrentPlayTime > caveSETime * caveSEPlayCount)
         {
