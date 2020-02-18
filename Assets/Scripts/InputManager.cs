@@ -41,7 +41,48 @@ public class InputManager : MonoBehaviour
             TestControl(LC, RC);
         }
     }
-
+    public enum ButtonLock
+    {
+        HandTrigger,
+        IndexTrigger,
+        Button1,
+        Button2,
+        Stick,
+        All
+    }
+    public enum Hands
+    {
+        Right,
+        Left
+    }
+    public void SafetyLock(Hands hand, ButtonLock changeLock, bool flag)
+    {
+        ControllerInput input = hand == Hands.Right ? RC : LC;
+        switch (changeLock)
+        {
+            case ButtonLock.HandTrigger:
+                input.HandTrigger.IsLock = flag;
+                break;
+            case ButtonLock.IndexTrigger:
+                input.IndexTrigger.IsLock = flag;
+                break;
+            case ButtonLock.Button1:
+                input.Button1.IsLock = flag;
+                break;
+            case ButtonLock.Button2:
+                input.Button2.IsLock = flag;
+                break;
+            case ButtonLock.Stick:
+                input.StickIsLock = flag;
+                break;
+            case ButtonLock.All:
+                input.HandTrigger.IsLock = flag;
+                input.IndexTrigger.IsLock = flag;
+                input.Button1.IsLock = flag;
+                input.Button2.IsLock = flag;
+                break;
+        }
+    }
     private void TestControl(ControllerInput LC, ControllerInput RC)
     {
         //左ボタン1 : Z-Key
@@ -255,16 +296,21 @@ public class InputManager : MonoBehaviour
     {
         public class GetButton
         {
+            public bool IsLock { get; set; }
+            private bool buttonGet;
             /// <summary>押している時</summary>
-            public bool Get { get; set; }
+            public bool Get { get { return buttonGet && !IsLock; } set { buttonGet = value; } }
+            private bool buttonGetDown;
             /// <summary>押した時</summary>
-            public bool GetDown { get; set; }
+            public bool GetDown { get { return buttonGetDown && !IsLock; } set { buttonGetDown = value; } }
+            private bool buttonGetUp;
             /// <summary>離した時</summary>
-            public bool GetUp { get; set; }
+            public bool GetUp { get { return buttonGetUp && !IsLock; } set { buttonGetUp = value; } }
         }
         public class GetTrigger : GetButton
         {
-            public float Axis { get; set; }
+            private float axis;
+            public float Axis { get { return axis * (IsLock ? 0 : 1); } set { axis = value; } }
         }
         /// <summary>ハンドトリガー</summary>
         public GetTrigger HandTrigger { get; set; } = new GetTrigger();
@@ -274,8 +320,10 @@ public class InputManager : MonoBehaviour
         public GetButton Button1 { get; set; } = new GetButton();
         /// <summary>B or Yボタン</summary>
         public GetButton Button2 { get; set; } = new GetButton();
+        public bool StickIsLock { get; set; }
+        private Vector2 axisStick;
         /// <summary>スティックの入力</summary>
-        public Vector2 AxisStick { get; set; }
+        public Vector2 AxisStick { get { return axisStick * (StickIsLock ? 0 : 1); } set { axisStick = value; } }
         /// <summary>コントローラの位置</summary>
         public Vector3 Position { get; set; }
         /// <summary>コントローラの角度</summary>
