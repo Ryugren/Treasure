@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class TutorialObserver : BaseObserver
 {
     [SerializeField]
+    private AudioSource correctSE = null;
+    [SerializeField]
     private AudioSource[] voices = null;
     private bool instructFlag = false;
     [SerializeField]
     private Text instructions = null;
     private bool isChecked = false;
     private TutorialStatus state = TutorialStatus.First;
-    private float waitTime = 0;
+    private float coolTime = 0;
     public enum TutorialStatus
     {
         First,
@@ -33,16 +35,16 @@ public class TutorialObserver : BaseObserver
     {
         input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, true);
         input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, true);
-        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, false);
+        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
     }
     private void FixedUpdate()
     {
-        if (waitTime <= 0) return;
-        waitTime -= Time.deltaTime;
+        if (coolTime > 0) coolTime -= Time.deltaTime;
     }
     public override void Action()
     {
         base.Action();
+        if (coolTime > 0) return;
         switch (state)
         {
             case TutorialStatus.First:
@@ -115,35 +117,29 @@ public class TutorialObserver : BaseObserver
     {
         SceneManager.LoadScene("MainGame");
     }
-    private void Waiting()
+    private void Cooling()
     {
-        waitTime = 5f;
+        coolTime = 3f;
     }
     private void First()
     {
-        if (!isChecked)
-        {
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, true);
-            instructions.text = "操作確認を始めます";
-            Waiting();
-            isChecked = true;
-        }
-        else if (waitTime <= 0)
-        {
-            isChecked = false;
-            state = TutorialStatus.LeftTurnCamera;
-        }
+        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, true);
+        instructions.text = "操作確認を始めます";
+        state = TutorialStatus.LeftTurnCamera;
+        Cooling();
     }
     private void LeftTurnCamera()
     {
         if (!isChecked)
         {
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
-            instructions.text = "左の中指を\nにぎってください";
+            instructions.text = "まずは左の中指を\nにぎってください";
             isChecked = true;
         }
         else if (input.LC.HandTrigger.Axis > 0.5f)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.RightTurnCamera;
         }
@@ -153,11 +149,13 @@ public class TutorialObserver : BaseObserver
         if (!isChecked)
         {
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
-            instructions.text = "右の中指を\nにぎってください";
+            instructions.text = "次に右の中指を\nにぎってください";
             isChecked = true;
         }
         else if (input.RC.HandTrigger.Axis > 0.5f)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.Move;
         }
@@ -172,6 +170,8 @@ public class TutorialObserver : BaseObserver
         }
         else if (input.LC.AxisStick.magnitude > 0.5f)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.SearchDoor;
         }
@@ -185,6 +185,7 @@ public class TutorialObserver : BaseObserver
         }
         else if (true)
         {
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightDown;
         }
@@ -198,6 +199,7 @@ public class TutorialObserver : BaseObserver
         }
         else if (true)
         {
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightOn;
         }
@@ -212,6 +214,8 @@ public class TutorialObserver : BaseObserver
         }
         else if (input.LC.IndexTrigger.Axis > 0.5f)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightAtTarget;
         }
@@ -226,6 +230,7 @@ public class TutorialObserver : BaseObserver
         else if (true)
         {
             isChecked = false;
+            correctSE.Play();
             state = TutorialStatus.Move2;
         }
     }
@@ -244,17 +249,9 @@ public class TutorialObserver : BaseObserver
     }
     private void TreadTrap()
     {
-        if (!isChecked)
-        {
-            instructions.text = "罠を踏んだことで\nダメージを受けました";
-            isChecked = true;
-            Waiting();
-        }
-        else if (waitTime <= 0)
-        {
-            isChecked = false;
-            state = TutorialStatus.BeamOn;
-        }
+        instructions.text = "罠を踏んだことで\nダメージを受けました";
+        state = TutorialStatus.BeamOn;
+        Cooling();
     }
     private void BeamOn()
     {
@@ -266,6 +263,8 @@ public class TutorialObserver : BaseObserver
         }
         else if (input.RC.IndexTrigger.Axis > 0.5f)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.BeamAtTarget;
         }
@@ -279,6 +278,7 @@ public class TutorialObserver : BaseObserver
         }
         else if (true)
         {
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.TryGame;
         }
