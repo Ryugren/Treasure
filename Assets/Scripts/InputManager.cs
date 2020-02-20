@@ -78,6 +78,7 @@ public class InputManager : MonoBehaviour
             case ButtonLock.All:
                 input.HandTrigger.IsLock = flag;
                 input.IndexTrigger.IsLock = flag;
+                input.StickIsLock = flag;
                 input.Button1.IsLock = flag;
                 input.Button2.IsLock = flag;
                 break;

@@ -14,7 +14,12 @@ public class TutorialObserver : BaseObserver
     private Text instructions = null;
     private bool isChecked = false;
     private TutorialStatus state = TutorialStatus.First;
-    private float coolTime = 0;
+    private float coolTimeCount = 0f;
+    [SerializeField, ColorUsage(false)]
+    private Color minColor = Color.gray;
+    private Color maxColor;
+    private float maxTime = 3f;
+    private float lightTimeCount = 0f;
     public enum TutorialStatus
     {
         First,
@@ -22,6 +27,7 @@ public class TutorialObserver : BaseObserver
         RightTurnCamera,
         Move,
         SearchDoor,
+        IsLookedDoor,
         LightDown,
         LightOn,
         LightAtTarget,
@@ -36,15 +42,16 @@ public class TutorialObserver : BaseObserver
         input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, true);
         input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, true);
         input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
+        maxColor = RenderSettings.ambientSkyColor;
     }
     private void FixedUpdate()
     {
-        if (coolTime > 0) coolTime -= Time.deltaTime;
+        if (coolTimeCount > 0) coolTimeCount -= Time.deltaTime;
     }
     public override void Action()
     {
         base.Action();
-        if (coolTime > 0) return;
+        if (coolTimeCount > 0) return;
         switch (state)
         {
             case TutorialStatus.First:
@@ -61,6 +68,9 @@ public class TutorialObserver : BaseObserver
                 break;
             case TutorialStatus.SearchDoor:
                 SearchDoor();
+                break;
+            case TutorialStatus.IsLookedDoor:
+                IsLookedDoor();
                 break;
             case TutorialStatus.LightDown:
                 LightDown();
@@ -119,7 +129,7 @@ public class TutorialObserver : BaseObserver
     }
     private void Cooling()
     {
-        coolTime = 3f;
+        coolTimeCount = maxTime;
     }
     private void First()
     {
@@ -187,10 +197,10 @@ public class TutorialObserver : BaseObserver
         {
             correctSE.Play();
             isChecked = false;
-            state = TutorialStatus.LightDown;
+            state = TutorialStatus.IsLookedDoor;
         }
     }
-    private void LightDown()
+    private void IsLookedDoor()
     {
         if (!isChecked)
         {
@@ -201,7 +211,27 @@ public class TutorialObserver : BaseObserver
         {
             correctSE.Play();
             isChecked = false;
+            state = TutorialStatus.LightDown;
+        }
+    }
+    private void LightDown()
+    {
+        if (!isChecked)
+        {
+            instructions.text = "照明を暗くします";
+            lightTimeCount = maxTime;
+            isChecked = true;
+        }
+        else if (lightTimeCount < 0)
+        {
+            RenderSettings.ambientSkyColor = minColor;
+            isChecked = false;
             state = TutorialStatus.LightOn;
+        }
+        else
+        {
+            RenderSettings.ambientSkyColor = minColor + (maxColor - minColor) * lightTimeCount / maxTime;
+            lightTimeCount -= Time.deltaTime;
         }
     }
     private void LightOn()
