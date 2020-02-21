@@ -12,6 +12,6 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        countText.text = ((int)(player.GM.Parameter.MaxPlayTime - player.GM.Parameter.CurrentPlayTime)).ToString();
+        countText.text = (Mathf.CeilToInt(player.GM.Parameter.MaxPlayTime - player.GM.Parameter.CurrentPlayTime)).ToString();
     }
 }

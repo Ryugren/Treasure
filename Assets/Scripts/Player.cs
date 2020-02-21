@@ -174,10 +174,10 @@ public class Player : MonoBehaviour
         {
             turnTimeCount += Time.deltaTime;
             transform.Rotate(Vector3.up, 360 / angleVisionCutNumber * turnDirection * Time.deltaTime / totalTurnTime);
-            if (turnTimeCount >= totalTurnTime)
-            {
-                transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
-            }
+        }
+        if (turnTimeCount >= totalTurnTime)
+        {
+            transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
         }
     }
     public void Damage(float value)
