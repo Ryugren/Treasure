@@ -20,14 +20,27 @@ public class TutorialObserver : BaseObserver
     private Color maxColor;
     private float maxTime = 3f;
     private float lightTimeCount = 0f;
+    //
+    [SerializeField]
+    private Player player = null;
+    [SerializeField]
+    private PositionChecker doorPositionChecker = null;
+    private Vector3 checkCurrentPosition = Vector3.zero;
+    [SerializeField]
+    private SwitchSymbol symbol = null;
+    [SerializeField]
+    private BearTrap bearTrap = null;
+    [SerializeField]
+    private BearTrap breakBearTrap = null;
+    [SerializeField]
+    private SlideDoor slideDoor = null;
     public enum TutorialStatus
     {
         First,
         LeftTurnCamera,
         RightTurnCamera,
-        Move,
-        SearchDoor,
         IsLookedDoor,
+        Move,
         LightDown,
         LightOn,
         LightAtTarget,
@@ -63,14 +76,11 @@ public class TutorialObserver : BaseObserver
             case TutorialStatus.RightTurnCamera:
                 RightTurnCamara();
                 break;
-            case TutorialStatus.Move:
-                Move();
-                break;
-            case TutorialStatus.SearchDoor:
-                SearchDoor();
-                break;
             case TutorialStatus.IsLookedDoor:
                 IsLookedDoor();
+                break;
+            case TutorialStatus.Move:
+                Move();
                 break;
             case TutorialStatus.LightDown:
                 LightDown();
@@ -167,36 +177,6 @@ public class TutorialObserver : BaseObserver
             Cooling();
             correctSE.Play();
             isChecked = false;
-            state = TutorialStatus.Move;
-        }
-    }
-    private void Move()
-    {
-        if (!isChecked)
-        {
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
-            instructions.text = "左スティックを\n倒して進んでください";
-            isChecked = true;
-        }
-        else if (input.LC.AxisStick.magnitude > 0.5f)
-        {
-            Cooling();
-            correctSE.Play();
-            isChecked = false;
-            state = TutorialStatus.SearchDoor;
-        }
-    }
-    private void SearchDoor()
-    {
-        if (!isChecked)
-        {
-            instructions.text = "では扉を探してください";
-            isChecked = true;
-        }
-        else if (true)
-        {
-            correctSE.Play();
-            isChecked = false;
             state = TutorialStatus.IsLookedDoor;
         }
     }
@@ -207,8 +187,26 @@ public class TutorialObserver : BaseObserver
             instructions.text = "扉と向かい合ってください";
             isChecked = true;
         }
-        else if (true)
+        else if (player.AngleVisionNumber == 4)
         {
+            correctSE.Play();
+            isChecked = false;
+            state = TutorialStatus.Move;
+        }
+    }
+    private void Move()
+    {
+        if (!isChecked)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, true);
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, true);
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
+            instructions.text = "左スティックを\n倒して進んでください";
+            isChecked = true;
+        }
+        else if (doorPositionChecker.Flag)
+        {
+            Cooling();
             correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightDown;
@@ -230,6 +228,9 @@ public class TutorialObserver : BaseObserver
         }
         else
         {
+            Vector3 aPos = checkCurrentPosition;
+            Vector3 bPos = new Vector3(doorPositionChecker.transform.position.x, checkCurrentPosition.y, doorPositionChecker.transform.position.z);
+            player.transform.position = bPos + (bPos - aPos) * lightTimeCount / maxTime;
             RenderSettings.ambientSkyColor = minColor + (maxColor - minColor) * lightTimeCount / maxTime;
             lightTimeCount -= Time.deltaTime;
         }
@@ -257,7 +258,7 @@ public class TutorialObserver : BaseObserver
             instructions.text = "壁のシンボルに向かって\nライトを当ててください";
             isChecked = true;
         }
-        else if (true)
+        else if (symbol.Parameters[0].IsBreaked)
         {
             isChecked = false;
             correctSE.Play();
@@ -271,7 +272,7 @@ public class TutorialObserver : BaseObserver
             instructions.text = "では扉の向こう側へ\n進んでください";
             isChecked = true;
         }
-        else if (true)
+        else if (bearTrap.IsBreaked)
         {
             isChecked = false;
             state = TutorialStatus.TreadTrap;
@@ -279,6 +280,7 @@ public class TutorialObserver : BaseObserver
     }
     private void TreadTrap()
     {
+        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, true);
         instructions.text = "罠を踏んだことで\nダメージを受けました";
         state = TutorialStatus.BeamOn;
         Cooling();
@@ -304,9 +306,10 @@ public class TutorialObserver : BaseObserver
         if (!isChecked)
         {
             instructions.text = "罠に向かって\nビームを当ててください";
+            slideDoor.SlideStart();
             isChecked = true;
         }
-        else if (true)
+        else if (breakBearTrap.IsBreaked)
         {
             correctSE.Play();
             isChecked = false;

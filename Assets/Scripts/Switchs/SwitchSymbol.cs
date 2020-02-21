@@ -13,7 +13,8 @@ public class SwitchSymbol : MonoBehaviour
         public bool IsBreaked { get; set; } = false;
     }
     [SerializeField]
-    Parameter[] parameters = null;
+    private Parameter[] parameters = null;
+    public Parameter[] Parameters { get { return parameters; } }
     // Start is called before the first frame update
     public void Activate(GameManager gm, int number)
     {

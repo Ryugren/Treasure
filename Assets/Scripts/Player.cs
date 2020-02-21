@@ -25,7 +25,9 @@ public class Player : MonoBehaviour
     private float damageTimeCount = 0f;
     [SerializeField]
     private int angleVisionCutNumber = 4;
+    [SerializeField]
     private int angleVisionNumber = 0;
+    public int AngleVisionNumber { get { return angleVisionNumber; } }
     private int fadeState = 0;
     private float turnFlagCount = 0;
     private int turnDirection = 0;
@@ -49,7 +51,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        angleVisionNumber = angleVisionCutNumber / 2;
         transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
     }
     void Update()
