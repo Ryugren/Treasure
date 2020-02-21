@@ -54,7 +54,7 @@ public class TutorialObserver : BaseObserver
     {
         input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, true);
         input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, true);
-        input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, false);
+        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
         maxColor = RenderSettings.ambientSkyColor;
     }
     private void FixedUpdate()
@@ -145,7 +145,7 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, true);
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, true);
             instructions.text = "操作確認を始めます";
             voices[0].Play();
             isChecked = true;
@@ -168,7 +168,7 @@ public class TutorialObserver : BaseObserver
         {
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
         }
-        else if (input.LC.HandTrigger.Axis > 0.5f)
+        if (input.LC.HandTrigger.Axis > 0.5f)
         {
             Cooling();
             correctSE.Play();
@@ -188,7 +188,7 @@ public class TutorialObserver : BaseObserver
         {
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
         }
-        else if (input.RC.HandTrigger.Axis > 0.5f)
+        if (input.RC.HandTrigger.Axis > 0.5f)
         {
             Cooling();
             correctSE.Play();
@@ -211,7 +211,7 @@ public class TutorialObserver : BaseObserver
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
         }
-        else if (!voices[3].isPlaying && player.AngleVisionNumber == 4)
+        if (!voices[3].isPlaying && player.AngleVisionNumber == 4)
         {
             correctSE.Play();
             isChecked = false;
@@ -232,10 +232,8 @@ public class TutorialObserver : BaseObserver
         {
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
         }
-        else if (doorPositionChecker.Flag)
+        if (doorPositionChecker.Flag)
         {
-            Cooling();
-            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightDown;
         }
@@ -280,7 +278,7 @@ public class TutorialObserver : BaseObserver
             instructions.text = "壁のシンボルに向かって\nライトを当ててください";
             isChecked = true;
         }
-        else if (!voices[5].isPlaying && symbol.Parameters[0].IsBreaked)
+        if (!voices[5].isPlaying && symbol.Parameters[0].IsBreaked)
         {
             isChecked = false;
             correctSE.Play();
@@ -299,7 +297,7 @@ public class TutorialObserver : BaseObserver
         {
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
         }
-        else if (bearTrap.IsBreaked)
+        if (bearTrap.IsBreaked)
         {
             isChecked = false;
             state = TutorialStatus.TreadTrap;
@@ -314,7 +312,7 @@ public class TutorialObserver : BaseObserver
             voices[7].Play();
             isChecked = true;
         }
-        else if (!voices[7].isPlaying)
+        if (!voices[7].isPlaying)
         {
             isChecked = false;
             state = TutorialStatus.BeamOn;
@@ -336,7 +334,7 @@ public class TutorialObserver : BaseObserver
             slideDoor.SlideStart();
             isChecked = true;
         }
-        else if (!voices[8].isPlaying && breakBearTrap.IsBreaked)
+        if (!voices[8].isPlaying && breakBearTrap.IsBreaked)
         {
             correctSE.Play();
             isChecked = false;
@@ -349,6 +347,8 @@ public class TutorialObserver : BaseObserver
         {
             voices[9].Play();
             instructions.text = "操作確認は以上です";
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, false);
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, false);
             isChecked = true;
         }
         else if(!voices[9].isPlaying)

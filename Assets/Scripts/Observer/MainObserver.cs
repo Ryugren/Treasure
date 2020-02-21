@@ -58,6 +58,7 @@ public class MainObserver : BaseObserver
             if (!players[i].activeSelf) continue;
             players[i].SetActive(false);
         }
+        firstVoice.Play();
         cave.SetActive(false);
     }
     public override void Action()
