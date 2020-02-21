@@ -7,6 +7,8 @@ public class CompaasTut : MonoBehaviour
 {
     public RawImage CompassImage;
     public Transform Player;
+    [SerializeField]
+    private float add_angle = 0;
     //public Text CompassDirectionText;
 
     void Start()
@@ -16,7 +18,7 @@ public class CompaasTut : MonoBehaviour
 
     void Update()
     {
-        CompassImage.uvRect = new Rect(Player.localEulerAngles.y / 360, 0, 1, 1);
+        CompassImage.uvRect = new Rect((Player.localEulerAngles.y + add_angle) / 360, 0, 1, 1);
 
         //Vector3 forward = Player.transform.forward;
 
