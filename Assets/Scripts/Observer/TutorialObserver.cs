@@ -143,18 +143,30 @@ public class TutorialObserver : BaseObserver
     }
     private void First()
     {
-        input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, true);
-        instructions.text = "操作確認を始めます";
-        state = TutorialStatus.LeftTurnCamera;
-        Cooling();
+        if (!isChecked)
+        {
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, true);
+            instructions.text = "操作確認を始めます";
+            voices[0].Play();
+            isChecked = true;
+        }
+        else if (!voices[0].isPlaying)
+        {
+            state = TutorialStatus.LeftTurnCamera;
+            isChecked = false;
+        }
     }
     private void LeftTurnCamera()
     {
         if (!isChecked)
         {
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
             instructions.text = "まずは左の中指を\nにぎってください";
+            voices[1].Play();
             isChecked = true;
+        }
+        else if (!voices[1].isPlaying)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
         }
         else if (input.LC.HandTrigger.Axis > 0.5f)
         {
@@ -168,9 +180,13 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
             instructions.text = "次に右の中指を\nにぎってください";
+            voices[2].Play();
             isChecked = true;
+        }
+        else if (!voices[2].isPlaying)
+        {
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
         }
         else if (input.RC.HandTrigger.Axis > 0.5f)
         {
@@ -185,9 +201,17 @@ public class TutorialObserver : BaseObserver
         if (!isChecked)
         {
             instructions.text = "扉と向かい合ってください";
+            voices[3].Play();
             isChecked = true;
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, true);
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, true);
         }
-        else if (player.AngleVisionNumber == 4)
+        else if (!voices[3].isPlaying)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
+        }
+        else if (!voices[3].isPlaying && player.AngleVisionNumber == 4)
         {
             correctSE.Play();
             isChecked = false;
@@ -200,12 +224,18 @@ public class TutorialObserver : BaseObserver
         {
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, true);
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, true);
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
+            voices[4].Play();
             instructions.text = "左スティックを\n倒して進んでください";
             isChecked = true;
         }
+        else if (!voices[4].isPlaying)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
+        }
         else if (doorPositionChecker.Flag)
         {
+            Cooling();
+            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightDown;
         }
@@ -217,6 +247,8 @@ public class TutorialObserver : BaseObserver
             instructions.text = "照明を暗くします";
             lightTimeCount = maxTime;
             checkCurrentPosition = player.transform.position;
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, true);
+            voices[5].Play();
             isChecked = true;
         }
         else if (lightTimeCount >= 0)
@@ -236,19 +268,10 @@ public class TutorialObserver : BaseObserver
     }
     private void LightOn()
     {
-        if (!isChecked)
-        {
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
-            instructions.text = "左人差し指を\nにぎってください";
-            isChecked = true;
-        }
-        else if (input.LC.IndexTrigger.Axis > 0.5f)
-        {
-            Cooling();
-            correctSE.Play();
-            isChecked = false;
-            state = TutorialStatus.LightAtTarget;
-        }
+        instructions.text = "左人差し指を\nにぎってください";
+        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
+        Cooling();
+        state = TutorialStatus.LightAtTarget;
     }
     private void LightAtTarget()
     {
@@ -257,7 +280,7 @@ public class TutorialObserver : BaseObserver
             instructions.text = "壁のシンボルに向かって\nライトを当ててください";
             isChecked = true;
         }
-        else if (symbol.Parameters[0].IsBreaked)
+        else if (!voices[5].isPlaying && symbol.Parameters[0].IsBreaked)
         {
             isChecked = false;
             correctSE.Play();
@@ -269,7 +292,12 @@ public class TutorialObserver : BaseObserver
         if (!isChecked)
         {
             instructions.text = "では扉の向こう側へ\n進んでください";
+            voices[6].Play();
             isChecked = true;
+        }
+        else if (!voices[6].isPlaying)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
         }
         else if (bearTrap.IsBreaked)
         {
@@ -279,26 +307,26 @@ public class TutorialObserver : BaseObserver
     }
     private void TreadTrap()
     {
-        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, true);
-        instructions.text = "罠を踏んだことで\nダメージを受けました";
-        state = TutorialStatus.BeamOn;
-        Cooling();
+        if (!isChecked)
+        {
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, true);
+            instructions.text = "罠を踏んだことで\nダメージを受けました";
+            voices[7].Play();
+            isChecked = true;
+        }
+        else if (!voices[7].isPlaying)
+        {
+            isChecked = false;
+            state = TutorialStatus.BeamOn;
+        }
     }
     private void BeamOn()
     {
-        if (!isChecked)
-        {
-            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, false);
-            instructions.text = "右人差し指を\nにぎってください";
-            isChecked = true;
-        }
-        else if (input.RC.IndexTrigger.Axis > 0.5f)
-        {
-            Cooling();
-            correctSE.Play();
-            isChecked = false;
-            state = TutorialStatus.BeamAtTarget;
-        }
+        input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, false);
+        instructions.text = "右人差し指を\nにぎってください";
+        voices[8].Play();
+        Cooling();
+        state = TutorialStatus.BeamAtTarget;
     }
     private void BeamAtTarget()
     {
@@ -308,7 +336,7 @@ public class TutorialObserver : BaseObserver
             slideDoor.SlideStart();
             isChecked = true;
         }
-        else if (breakBearTrap.IsBreaked)
+        else if (!voices[8].isPlaying && breakBearTrap.IsBreaked)
         {
             correctSE.Play();
             isChecked = false;
@@ -319,8 +347,12 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
+            voices[9].Play();
             instructions.text = "操作確認は以上です";
             isChecked = true;
+        }
+        else if(!voices[9].isPlaying)
+        {
             instructFlag = true;
         }
     }
