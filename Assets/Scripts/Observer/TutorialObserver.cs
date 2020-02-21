@@ -123,7 +123,7 @@ public class TutorialObserver : BaseObserver
     }
     public override void GameStart()
     {
-        if (input.RC.IndexTrigger.Axis > 0.5f)
+        if (input.LC.IndexTrigger.Axis > 0.5f)
         {
             GM.Parameter.StartGameFlag = true;
             isChecked = false;

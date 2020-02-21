@@ -152,7 +152,7 @@ public class MainObserver : BaseObserver
             if (!players[i].activeSelf) continue;
             players[i].SetActive(false);
         }
-        if (input.LC.IndexTrigger.Axis > 0.5f)
+        if (input.RC.IndexTrigger.Axis > 0.5f)
         {
             if (timeCount < 3f)
             {
