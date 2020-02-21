@@ -887,6 +887,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 272401500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &272401502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5966881781457524200, guid: 4c9686c902c044a4eba1399fdd5d128c,
+    type: 3}
+  m_PrefabInstance: {fileID: 272401500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dae2c1a90e1fa64cb33f686557b4580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &324508241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1286,6 +1298,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.030000014
       objectReference: {fileID: 0}
+    - target: {fileID: 630757093118390278, guid: 2e9ec574daa6332419aa074a5e29a553,
+        type: 3}
+      propertyPath: parameters.Array.data[0].ssTarget
+      value: 
+      objectReference: {fileID: 272401502}
     - target: {fileID: 7432755304330865133, guid: 2e9ec574daa6332419aa074a5e29a553,
         type: 3}
       propertyPath: m_Layer
@@ -2309,6 +2326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CompassImage: {fileID: 2086902501}
   Player: {fileID: 8040628415849245827}
+  add_angle: 0
 --- !u!1 &1267542627
 GameObject:
   m_ObjectHideFlags: 0
@@ -9571,6 +9589,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8040628415849245827}
     m_Modifications:
+    - target: {fileID: 1294750351807702167, guid: 1b42035d531e51642860636398b36bf9,
+        type: 3}
+      propertyPath: m_Name
+      value: sunaarasi_short Audio
+      objectReference: {fileID: 0}
     - target: {fileID: 1819603585554001406, guid: 1b42035d531e51642860636398b36bf9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9625,11 +9648,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294750351807702167, guid: 1b42035d531e51642860636398b36bf9,
-        type: 3}
-      propertyPath: m_Name
-      value: sunaarasi_short Audio
       objectReference: {fileID: 0}
     - target: {fileID: 3072746580399109283, guid: 1b42035d531e51642860636398b36bf9,
         type: 3}

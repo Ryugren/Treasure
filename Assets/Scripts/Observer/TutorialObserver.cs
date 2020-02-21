@@ -206,8 +206,6 @@ public class TutorialObserver : BaseObserver
         }
         else if (doorPositionChecker.Flag)
         {
-            Cooling();
-            correctSE.Play();
             isChecked = false;
             state = TutorialStatus.LightDown;
         }
@@ -221,19 +219,19 @@ public class TutorialObserver : BaseObserver
             checkCurrentPosition = player.transform.position;
             isChecked = true;
         }
-        else if (lightTimeCount < 0)
+        else if (lightTimeCount >= 0)
+        {
+            Vector3 aPos = checkCurrentPosition;
+            Vector3 bPos = new Vector3(doorPositionChecker.transform.position.x, checkCurrentPosition.y, doorPositionChecker.transform.position.z);
+            player.transform.position = bPos + (aPos - bPos) * lightTimeCount / maxTime;
+            RenderSettings.ambientSkyColor = minColor + (maxColor - minColor) * lightTimeCount / maxTime;
+            lightTimeCount -= Time.deltaTime;
+        }
+        else
         {
             RenderSettings.ambientSkyColor = minColor;
             isChecked = false;
             state = TutorialStatus.LightOn;
-        }
-        else
-        {
-            Vector3 aPos = checkCurrentPosition;
-            Vector3 bPos = new Vector3(doorPositionChecker.transform.position.x, checkCurrentPosition.y, doorPositionChecker.transform.position.z);
-            player.transform.position = bPos + (bPos - aPos) * lightTimeCount / maxTime;
-            RenderSettings.ambientSkyColor = minColor + (maxColor - minColor) * lightTimeCount / maxTime;
-            lightTimeCount -= Time.deltaTime;
         }
     }
     private void LightOn()
