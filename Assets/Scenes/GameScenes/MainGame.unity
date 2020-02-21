@@ -469,7 +469,6 @@ GameObject:
   - component: {fileID: 51968881}
   - component: {fileID: 51968884}
   - component: {fileID: 51968883}
-  - component: {fileID: 51968882}
   m_Layer: 8
   m_Name: Mud (1)
   m_TagString: Untagged
@@ -485,7 +484,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51968880}
   m_LocalRotation: {x: 0, y: 0.5735764, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2851072968082416850}
@@ -493,22 +492,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 70, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -420, y: -180}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &51968882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51968880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4fec73e8cf60346b52f333b1a29e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3667620403779277270}
 --- !u!114 &51968883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9497,7 +9483,6 @@ GameObject:
   - component: {fileID: 1147336235}
   - component: {fileID: 1147336238}
   - component: {fileID: 1147336237}
-  - component: {fileID: 1147336236}
   m_Layer: 8
   m_Name: Mud (2)
   m_TagString: Untagged
@@ -9513,7 +9498,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147336234}
   m_LocalRotation: {x: 0, y: 0.57357657, z: -0, w: -0.81915194}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2851072968082416850}
@@ -9521,22 +9506,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 290, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 420, y: -180}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1147336236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147336234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4fec73e8cf60346b52f333b1a29e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3667620403779277270}
 --- !u!114 &1147336237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20566,7 +20538,6 @@ GameObject:
   - component: {fileID: 2609814554190920198}
   - component: {fileID: 2609814554190920200}
   - component: {fileID: 2609814554190920199}
-  - component: {fileID: 2609814554190920201}
   m_Layer: 8
   m_Name: Mud
   m_TagString: Untagged
@@ -20630,19 +20601,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2609814554190920197}
   m_CullTransparentMesh: 0
---- !u!114 &2609814554190920201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2609814554190920197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4fec73e8cf60346b52f333b1a29e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3667620403779277270}
 --- !u!224 &2646009789883177555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20770,6 +20728,7 @@ GameObject:
   - component: {fileID: 2851072968082416813}
   - component: {fileID: 2851072968082416812}
   - component: {fileID: 2851072968082416851}
+  - component: {fileID: 2851072968082416852}
   m_Layer: 8
   m_Name: WindowCanvas
   m_TagString: Untagged
@@ -20819,6 +20778,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2851072968082416852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851072968082416849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4fec73e8cf60346b52f333b1a29e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3667620403779277270}
+  mySelfImages:
+  - {fileID: 2609814554190920199}
+  - {fileID: 51968883}
+  - {fileID: 1147336237}
 --- !u!1 &2980618820627961696
 GameObject:
   m_ObjectHideFlags: 0

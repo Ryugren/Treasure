@@ -78,106 +78,102 @@ public class Player : MonoBehaviour
     }
     void CameraMove()
     {
-        switch (fadeState)
+        if (fadeState == 0)//トリガー待ち
         {
-            case 0: //トリガー待ち
-                if (inputManager.LC.HandTrigger.Axis > 0.5f)
+            if (inputManager.LC.HandTrigger.Axis > 0.5f)
+            {
+                turnDirection = -1;
+                fadeState = 1;
+                turnFlagCount = turnFadeOutTimeStop;
+                turnTimeCount = 0;
+                shortNoiseSE.Play();
+            }
+            else if (inputManager.RC.HandTrigger.Axis > 0.5f)
+            {
+                turnDirection = 1;
+                fadeState = 1;
+                turnFlagCount = turnFadeOutTimeStop;
+                turnTimeCount = 0;
+                shortNoiseSE.Play();
+            }
+        }
+        if (fadeState == 1)//フェイドアウト待ち
+        {
+            if (turnFlagCount <= 0)
+            {
+                turnFlagCount = turnFadeOutTime;
+                fadeState = 2;
+            }
+        }
+        if (fadeState == 2)//フェイドアウト
+        {
+            if (turnFlagCount <= 0)
+            {
+                turnFlagCount = turnFadeInTimeStop;
+                fadeState = 3;
+            }
+            else
+            {
+                foreach (TextureNoise it in tns)
                 {
-                    turnDirection = -1;
-                    fadeState = 1;
-                    turnFlagCount = turnFadeOutTimeStop;
+                    it.AlphaChanged(1 - (turnFlagCount / turnFadeOutTime));
+                }
+            }
+        }
+        if (fadeState == 3)//フェイドイン待ち
+        {
+            if (turnFlagCount <= 0)
+            {
+                turnFlagCount = turnFadeInTime;
+                fadeState = 4;
+            }
+        }
+        if (fadeState == 4)//フェイドイン
+        {
+            if (turnFlagCount <= 0)
+            {
+                fadeState = 5;
+                foreach (TextureNoise it in tns)
+                {
+                    it.AlphaChanged(0);
+                }
+            }
+            else
+            {
+                foreach (TextureNoise it in tns)
+                {
+                    it.AlphaChanged(turnFlagCount / turnFadeInTime);
+                }
+            }
+        }
+        if (0 < fadeState && fadeState < 6)//回転終了待ち
+        {
+            if (turnTimeCount < totalTurnTime)
+            {
+                turnFlagCount -= Time.deltaTime;
+                turnTimeCount += Time.deltaTime;
+                transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * (angleVisionNumber + turnDirection * turnTimeCount / totalTurnTime), Vector3.up);
+            }
+            else 
+            {
+                if (turnDirection == -1)
+                {
                     angleVisionNumber = (angleVisionNumber + angleVisionCutNumber - 1) % angleVisionCutNumber;
-                    turnTimeCount = 0;
-                    shortNoiseSE.Play();
                 }
-                else if (inputManager.RC.HandTrigger.Axis > 0.5f)
+                else
                 {
-                    turnDirection = 1;
-                    fadeState = 1;
-                    turnFlagCount = turnFadeOutTimeStop;
                     angleVisionNumber = (angleVisionNumber + 1) % angleVisionCutNumber;
-                    turnTimeCount = 0;
-                    shortNoiseSE.Play();
                 }
-                break;
-            case 1: //フェイドアウト待ち
-                if (turnFlagCount > 0)
-                {
-                    turnFlagCount -= Time.deltaTime;
-                }
-                else
-                {
-                    turnFlagCount = turnFadeOutTime;
-                    fadeState = 2;
-                }
-                break;
-            case 2: //フェイドアウト
-                if (turnFlagCount > 0)
-                {
-                    turnFlagCount -= Time.deltaTime;
-                    foreach (TextureNoise it in tns) 
-                    {
-                        it.AlphaChanged(1 - (turnFlagCount / turnFadeOutTime));
-                    }
-                }
-                else
-                {
-                    turnFlagCount = turnFadeInTimeStop;
-                    fadeState = 3;
-                }
-                break;
-            case 3: //フェイドイン待ち
-                if (turnFlagCount > 0)
-                {
-                    turnFlagCount -= Time.deltaTime;
-                }
-                else
-                {
-                    turnFlagCount = turnFadeInTime;
-                    fadeState = 4;
-                }
-                break;
-            case 4: //フェイドイン
-                if (turnFlagCount > 0)
-                {
-                    turnFlagCount -= Time.deltaTime;
-                    foreach (TextureNoise it in tns)
-                    {
-                        it.AlphaChanged(turnFlagCount / turnFadeInTime);
-                    }
-                }
-                else
-                {
-                    turnFlagCount = turnEndTime;
-                    fadeState = 5;
-                }
-                break;
-            case 5: //回転終了待ち
-                if (turnFlagCount > 0)
-                {
-                    turnFlagCount -= Time.deltaTime;
-                }
-                else
-                {
-                    fadeState = 6;
-                }
-                break;
-            case 6: //トリガー離されるの待ち
-                if (inputManager.LC.HandTrigger.Axis <= 0.1f && inputManager.RC.HandTrigger.Axis <= 0.1f)
-                {
-                    fadeState = 0;
-                }
-                break;
+                transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
+                fadeState = 6;
+            }
         }
-
-        if (0 != fadeState && 5 != fadeState)
+        if (fadeState == 6)
         {
-            turnTimeCount += Time.deltaTime;
-            transform.Rotate(Vector3.up, 360 / angleVisionCutNumber * turnDirection * Time.deltaTime / totalTurnTime);
-        }
-        if (turnTimeCount >= totalTurnTime)
-        {
-            transform.rotation = Quaternion.AngleAxis(360 / angleVisionCutNumber * angleVisionNumber, Vector3.up);
+            if (inputManager.LC.HandTrigger.Axis <= 0.1f && inputManager.RC.HandTrigger.Axis <= 0.1f)
+            {
+                fadeState = 0;
+            }
         }
     }
     public void Damage(float value)
