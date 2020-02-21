@@ -27,11 +27,15 @@ public class MainObserver : BaseObserver
     [SerializeField]
     private float distanceChange = 100f;
     [SerializeField]
-    private AudioSource voice1 = null;
-    private bool voice1Flag = false;
-    [SerializeField]
-    private AudioSource voice2 = null;
-    private bool voice2Flag = false;
+    private Voices[] voices = null;
+    [System.Serializable]
+    public class Voices
+    {
+        [SerializeField]
+        private AudioSource voice = null;
+        public AudioSource Voice { get { return voice; } }
+        public bool Flag { get; set; } = false;
+    }
     //
     [SerializeField]
     private AudioSource longNoiseSE = null;
@@ -69,15 +73,40 @@ public class MainObserver : BaseObserver
             caveSE.Play();
             ++caveSEPlayCount;
         }
-        if (!voice1Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 30)
+        if (!voices[0].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 20)
         {
-            voice1.Play();
-            voice1Flag = true;
+            voices[0].Voice.Play();
+            voices[0].Flag = true;
         }
-        if (!voice2Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 5)
+        if (!voices[1].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 5)
         {
-            voice2.Play();
-            voice2Flag = true;
+            voices[1].Voice.Play();
+            voices[1].Flag = true;
+        }
+        if (!voices[2].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 4)
+        {
+            voices[2].Voice.Play();
+            voices[2].Flag = true;
+        }
+        if (!voices[3].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 3)
+        {
+            voices[3].Voice.Play();
+            voices[3].Flag = true;
+        }
+        if (!voices[4].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 2)
+        {
+            voices[4].Voice.Play();
+            voices[4].Flag = true;
+        }
+        if (!voices[5].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 1)
+        {
+            voices[5].Voice.Play();
+            voices[5].Flag = true;
+        }
+        if (!voices[6].Flag && Parameter.MaxPlayTime - Parameter.CurrentPlayTime <= 0)
+        {
+            voices[6].Voice.Play();
+            voices[6].Flag = true;
         }
     }
     public override void GameStart()
