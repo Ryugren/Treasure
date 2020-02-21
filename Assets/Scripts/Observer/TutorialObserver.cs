@@ -54,7 +54,7 @@ public class TutorialObserver : BaseObserver
     {
         input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, true);
         input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, true);
-        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, false);
+        input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, false);
         maxColor = RenderSettings.ambientSkyColor;
     }
     private void FixedUpdate()
@@ -123,12 +123,12 @@ public class TutorialObserver : BaseObserver
     }
     public override void GameStart()
     {
-        if (input.LC.IndexTrigger.GetDown && input.LC.IndexTrigger.Axis > 0.5f)
+        if (input.RC.IndexTrigger.Axis > 0.5f)
         {
             GM.Parameter.StartGameFlag = true;
             isChecked = false;
             state = TutorialStatus.First;
-}
+        }
     }
     public override void GameOver()
     {
@@ -143,7 +143,7 @@ public class TutorialObserver : BaseObserver
     }
     private void First()
     {
-        input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.IndexTrigger, true);
+        input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.IndexTrigger, true);
         instructions.text = "操作確認を始めます";
         state = TutorialStatus.LeftTurnCamera;
         Cooling();
