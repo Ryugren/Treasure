@@ -218,6 +218,7 @@ public class TutorialObserver : BaseObserver
         {
             instructions.text = "照明を暗くします";
             lightTimeCount = maxTime;
+            checkCurrentPosition = player.transform.position;
             isChecked = true;
         }
         else if (lightTimeCount < 0)
