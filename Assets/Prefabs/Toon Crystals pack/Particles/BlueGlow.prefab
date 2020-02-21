@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 449424}
   - component: {fileID: 19889812}
   - component: {fileID: 19946638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
