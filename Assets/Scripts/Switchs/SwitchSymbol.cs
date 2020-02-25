@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwitchSymbol : MonoBehaviour
 {
     [System.Serializable]
-    public class Parameter
+    public class BaseParameter
     {
         [SerializeField]
         private SuperSwitchTarget ssTarget = null;
@@ -13,14 +13,13 @@ public class SwitchSymbol : MonoBehaviour
         public bool IsBreaked { get; set; } = false;
     }
     [SerializeField]
-    private Parameter[] parameters = null;
-    public Parameter[] Parameters { get { return parameters; } }
+    private BaseParameter parameter = null;
+    public BaseParameter Parameter { get { return parameter; } }
     // Start is called before the first frame update
-    public void Activate(GameManager gm, int number)
+    public void Activate(GameManager gm)
     {
-        if (number >= parameters.Length) return;
-        if (parameters[number].IsBreaked) return;
-        parameters[number].SSTarget.Activate(gm);
-        parameters[number].IsBreaked = true;
+        if (parameter.IsBreaked) return;
+        parameter.SSTarget.Activate(gm);
+        parameter.IsBreaked = true;
     }
 }

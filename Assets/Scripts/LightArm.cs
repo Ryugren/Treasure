@@ -48,15 +48,7 @@ public class LightArm : MonoBehaviour
             if (hit.collider.tag.Contains("Key"))
             {
                 SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
-                sg.Activate(player.GM, 0);
-            }
-        }
-        if (Physics.SphereCast(transform.position, 1, transform.forward, out hit, player.GM.Parameter.LightHit2Range, mask))
-        {
-            if (hit.collider.tag.Contains("Key"))
-            {
-                SwitchSymbol sg = hit.collider.GetComponent<SwitchSymbol>();
-                sg.Activate(player.GM, 1);
+                sg.Activate(player.GM);
             }
         }
     }

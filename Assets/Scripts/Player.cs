@@ -110,6 +110,10 @@ public class Player : MonoBehaviour
             if (turnFlagCount <= 0)
             {
                 turnFlagCount = turnFadeInTimeStop;
+                foreach (TextureNoise it in tns)
+                {
+                    it.AlphaChanged(1);
+                }
                 fadeState = 3;
             }
             else

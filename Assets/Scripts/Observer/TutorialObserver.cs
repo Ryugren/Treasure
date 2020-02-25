@@ -160,12 +160,13 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            instructions.text = "まずは左の中指を\nにぎってください";
+            instructions.text = "";
             voices[1].Play();
             isChecked = true;
         }
         else if (!voices[1].isPlaying)
         {
+            instructions.text = "左の中指を\nにぎってください";
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
         }
         if (input.LC.HandTrigger.Axis > 0.5f)
@@ -180,12 +181,13 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            instructions.text = "次に右の中指を\nにぎってください";
             voices[2].Play();
             isChecked = true;
+            instructions.text = "";
         }
         else if (!voices[2].isPlaying)
         {
+            instructions.text = "右の中指を\nにぎってください";
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
         }
         if (input.RC.HandTrigger.Axis > 0.5f)
@@ -200,14 +202,13 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            instructions.text = "扉と向かい合ってください";
+            instructions.text = "";
             voices[3].Play();
             isChecked = true;
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, true);
-            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, true);
         }
         else if (!voices[3].isPlaying)
         {
+            instructions.text = "扉と向かい合ってください";
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, false);
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, false);
         }
@@ -222,14 +223,15 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
+            instructions.text = "";
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.HandTrigger, true);
             input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.HandTrigger, true);
             voices[4].Play();
-            instructions.text = "左スティックを\n倒して進んでください";
             isChecked = true;
         }
         else if (!voices[4].isPlaying)
         {
+            instructions.text = "左スティックを\n倒して進んでください";
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
         }
         if (doorPositionChecker.Flag)
@@ -278,7 +280,7 @@ public class TutorialObserver : BaseObserver
             instructions.text = "壁のシンボルに向かって\nライトを当ててください";
             isChecked = true;
         }
-        if (!voices[5].isPlaying && symbol.Parameters[0].IsBreaked)
+        if (!voices[5].isPlaying && symbol.Parameter.IsBreaked)
         {
             isChecked = false;
             correctSE.Play();
@@ -289,12 +291,13 @@ public class TutorialObserver : BaseObserver
     {
         if (!isChecked)
         {
-            instructions.text = "では扉の向こう側へ\n進んでください";
+            instructions.text = "";
             voices[6].Play();
             isChecked = true;
         }
         else if (!voices[6].isPlaying)
         {
+            instructions.text = "では扉の向こう側へ\n進んでください";
             input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.Stick, false);
         }
         if (bearTrap.IsBreaked)
@@ -346,13 +349,14 @@ public class TutorialObserver : BaseObserver
         if (!isChecked)
         {
             voices[9].Play();
-            instructions.text = "操作確認は以上です";
-            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, false);
-            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, false);
+            instructions.text = "";
             isChecked = true;
         }
         else if(!voices[9].isPlaying)
         {
+            instructions.text = $"{Mathf.CeilToInt(GM.Parameter.MaxPlayTime - GM.Parameter.CurrentPlayTime)}秒後、本番が始まります";
+            input.SafetyLock(InputManager.Hands.Right, InputManager.ButtonLock.All, false);
+            input.SafetyLock(InputManager.Hands.Left, InputManager.ButtonLock.All, false);
             instructFlag = true;
         }
     }

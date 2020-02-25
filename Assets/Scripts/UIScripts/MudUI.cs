@@ -7,7 +7,7 @@ public class MudUI : MonoBehaviour
 {
     [SerializeField]
     private Player player = null;
-    private GameManager.ParameterBase pb { get { return player.GM.Parameter; } }
+    public GameManager.ParameterBase PB { get { return player.GM.Parameter; } }
     [SerializeField]
     private Image[] mySelfImages = null;
     private float timeCount = 0f;
@@ -25,10 +25,10 @@ public class MudUI : MonoBehaviour
     {
         if (player.GM.Parameter.IsBlindfolded)
         {
-            timeCount = pb.MaxBlindfoldTime;
+            timeCount = PB.MaxBlindfoldTime;
             for (int i = 0; i < mySelfImages.Length; ++i)
             {
-                mySelfImages[i].color = new Color(1, 1, 1, pb.MaxAlphaBlindfold);
+                mySelfImages[i].color = new Color(1, 1, 1, PB.MaxAlphaBlindfold);
             }
             player.GM.Parameter.IsBlindfolded = false;
         }
@@ -42,11 +42,11 @@ public class MudUI : MonoBehaviour
                     mySelfImages[i].color = new Color(1, 1, 1, 0f);
                 }
             } 
-            else if (timeCount <= pb.MaxBlindfoldTime - pb.ChangeBlindfoldTime)
+            else if (timeCount <= PB.MaxBlindfoldTime - PB.ChangeBlindfoldTime)
             {
                 for (int i = 0; i < mySelfImages.Length; ++i)
                 {
-                    mySelfImages[i].color = new Color(1, 1, 1, pb.MaxAlphaBlindfold * timeCount / (pb.MaxBlindfoldTime - pb.ChangeBlindfoldTime));
+                    mySelfImages[i].color = new Color(1, 1, 1, PB.MaxAlphaBlindfold * timeCount / (PB.MaxBlindfoldTime - PB.ChangeBlindfoldTime));
                 }
             }
         }
